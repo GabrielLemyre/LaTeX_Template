@@ -1,0 +1,147 @@
+% SHORTCUTS DOCUMENT
+
+%operateur e
+\newcommand{\e}[1]{e^{#1}}
+
+% Espérance 
+\long\def\esp#1{\mathds{E}\!\left[ #1 \right]}
+
+% Espérance Conditionnelle et indicée
+\long\def\espcond#1#2{\mathds{E}\!\left[ \left. \vphantom{#2} #1 \right\vert #2 \right]}
+
+% Espérance Conditionnelle et indicée
+\long\def\EspInd#1#2{\mathds{E}_{#1}\!\left[ #2 \right]}
+
+% Espérance Conditionnelle et indicée
+\long\def\EspCondInd#1#2#3{\mathds{E}_{#1}\!\left[ \left. \vphantom{#3}#2 \right\vert #3 \right]}
+
+
+% Variance
+\long\def\Var#1{\mathds{V}\!ar\!\left[ #1 \right]}
+
+% Covariance
+\long\def\cov#1#2{\hspace{0.08cm}\mathds{C}\!ov\!\left[ #1 ,#2\right]}
+
+% Corrélation
+\long\def\cor#1#2{\hspace{0.08cm}corr\!\left(#1,#2\right)}
+
+% POUR TOUT
+\def\pourtoutd#1#2{\forall{\, #1 \in{#2} } }
+
+% AUTOCOVARIANCE FUNCTION
+\def\avf#1#2{\hspace{0.08cm}\gamma_{#1}\!\left(#2\right)}
+
+% AUTOCOVARIANCE FUNCTION de x
+\def\avfx#1{\hspace{0.08cm}\gamma_{x}\!\left(#1\right)}
+
+% AUTOCORRELATION FUNCTION
+\def\acf#1#2{\hspace{0.08cm}\rho_{#1}\!\left(#2\right)}
+
+% AUTOCORRELATION FUNCTION de x
+\def\acfx#1{\hspace{0.08cm}\rho_{x}\!\left(#1\right)}
+
+%somme avec limite inf et sup et le contenu comme dernier argument
+\def\somme#1#2#3{\sum\limits_{#1}^{#2} {#3}}
+
+% EQUATIONS AUX DIFFéRENCES HOMOGÈNES
+\def\edh{équation aux Différences Homogènes }
+
+% EQUATIONS AUX DIFFéRENCES HOMOGÈNES
+\def\edhs{équations aux Différences Homogènes }
+
+% FONT FOR R FUNCTION
+\newcommand{\Rfont}[1]{\texttt{#1}} 
+
+% Nouveau cos
+\long\def\coss#1{\cos\!\left( #1 \right)}
+
+% Nouveau sin
+\long\def\sins#1{\sin\!\left( #1 \right)}
+
+% Nouveau tan
+\long\def\tans#1{\tan\!\left( #1 \right)}
+
+% Nouveau arctan
+\long\def\arctans#1{\arctan\!\left( #1 \right)}
+
+% VALEURS ABSOLUES ET NORMES
+\usepackage{mathtools}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+
+\def\rt{$\{r_t\}$\ }
+\def\wt{$\{w_t\}$\ }
+\def\xtm{$X^{t}_{t+m}$}
+\def\sigw{\sigma_{\omega}^2}
+
+\newcommand*{\ovA}[1]{%
+  \overline{\mbox{#1}\raisebox{4.5mm}{}}
+}
+
+\def\Rconj{\ovA{$R$}}
+
+% Créer une fonction qui entoure d'un cercle la string
+\usepackage{mathdesign}
+
+% Changer l'environnement de preuve
+\expandafter\let\expandafter\oldproof\csname\string\proof\endcsname
+\let\oldendproof\endproof
+\renewenvironment{proof}[1][\proofname]{%
+  \oldproof[\underline{\textbf{#1}}]%
+}{\oldendproof}
+
+\def\MPN#1{$^{(#1)}$}
+
+% Modele AR(p)
+\def\ar#1{$\mathrm{AR}\!\left(#1\right)$}
+% Modele MA(p)
+\def\ma#1{$\mathrm{MA}\!\left(#1\right)$}
+% Modele ARMA(p,q)
+\def\arma#1{$\mathrm{ARMA}\!\left(#1\right)$}
+% Modele ARCH(p)
+\def\arch#1{$\mathrm{ARCH}\!\left(#1\right)$}
+% Modele GARCH(p)
+\def\garch#1#2{$\mathrm{GARCH}\!\left(#1,#2\right)$}
+% Modele ARIMA(p,d,q)
+\def\arima#1{$\mathrm{ARIMA}\!\left(#1\right)$}
+% Operateur meilleure prevision linéaire
+\def\P#1#2{P_{\! #1}\!\left(X_{#2}\right)}
+
+\def\prev#1#2#3{{#1}_{#2}^{#3}}
+
+\def\Pr#1{\mathds{P}\!\left[#1\right]}
+
+\def\fgm#1#2{\mathcal{M}_{#1}\!\left(#2\right)}
+
+% Derives partielle
+
+\def\CalcPt#1#2{\left. #1 \right\vert_{#2}}
+
+\def\partder#1#2{\frac{\partial #2}{\partial #1} }
+\def\partderbar#1#2#3{\CalcPt{\frac{\partial}{\partial #1} #2}{#3}}
+\def\tpartder#1#2#3{\frac{\partial^{\left(#1\right)}}{\partial #2^{\left(#1\right)}} #3}
+\def\tpartderbar#1#2#3#4{\CalcPt{\frac{\partial^{\left(#1\right)}}{\partial #2^{\left(#1\right)}} #3}{#4}}
+
+%Réels
+\def\R{\mathds{R}}
+%Naturels
+\def\N{\mathds{N}}
+%complexe
+\def\C{\mathds{C}}
+%Rationnels
+\def\Q{\mathds{Q}}
+
+% APPARENCE VECTEUR
+\renewcommand{\vec}[1]{\boldsymbol{#1}}
+

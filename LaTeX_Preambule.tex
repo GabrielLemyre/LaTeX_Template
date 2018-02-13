@@ -36,12 +36,55 @@
 	\pagestyle{fancy}
 	\fancyhf{}
  	\fancyhead[L]{\sigleCours \ - \TypeRemise}
- 	\fancyhead[C]{--- \CoUn -- \CoDeux -- \CoTrois -- \CoQuatre ---}
+ 	\fancyhead[C]{--- \CoUn -- \CoDeux --- \\ --- \CoTrois -- \CoQuatre ---}
  	\fancyhead[R]{\dateremise}
  	
  %-----------------------------------------------------------------
  % Modifier style du numéro de page
 \rfoot{\vspace*{-2em} Page \thepage /\pageref{LastPage}}
+
+% TITLE PAGE
+\newcommand{\TitlePAGE}{
+\begin{titlepage}
+	
+	\centering % Centre everything on the title page
+	
+	\scshape % Use small caps for all text on the title page
+	
+	\vspace*{\baselineskip} % White space at the top of the page
+	%\includegraphics[width=0.15\textwidth]{example-image-1x1}\par\vspace{1cm}
+	{\huge\bfseries \textsc{\Establishment} \par}
+	
+	{\scshape\Large \Department \par}
+	
+	\vspace{2cm}
+	
+	\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} % Thick horizontal rule
+	\rule{\textwidth}{0.4pt} % Thin horizontal rule
+	
+	\vspace{0.75\baselineskip} % Whitespace above the title
+	
+	{\LARGE\bfseries \sigleCours \ - \textsc{\titreCours} \par}
+	{\scshape\Large\bfseries \TypeRemise \par}
+	
+	\vspace{0.75\baselineskip} % Whitespace below the title
+	
+	\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal rule
+	\rule{\textwidth}{1.6pt} % Thick horizontal rule
+	
+	\vspace{2cm}
+	{\Large\itshape \CoUn \\ \CoDeux \\ \CoTrois \\ \CoQuatre \par}
+	\vfill
+	Remis à \par
+	{\Large\itshape \NomProf \\}
+
+	\vfill
+
+% Bottom of the page
+	{\large \dateremise \par}
+\end{titlepage}
+\clearpage
+}
     
 %-----------------------------------------------------------------
 % Permet d'ajouter entre autre, une ligne à gauche des exemples,théorèmes,etc...
@@ -199,45 +242,3 @@
 
 \usepackage{colortbl}
 \definecolor{silver}{RGB}{220,220,220}
-
-\newcommand{\TitlePAGE}{
-\begin{titlepage}
-	
-	\centering % Centre everything on the title page
-	
-	\scshape % Use small caps for all text on the title page
-	
-	\vspace*{\baselineskip} % White space at the top of the page
-	%\includegraphics[width=0.15\textwidth]{example-image-1x1}\par\vspace{1cm}
-	{\huge\bfseries \textsc{\Establishment} \par}
-	
-	{\scshape\Large \Department \par}
-	
-	\vspace{2cm}
-	
-	\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} % Thick horizontal rule
-	\rule{\textwidth}{0.4pt} % Thin horizontal rule
-	
-	\vspace{0.75\baselineskip} % Whitespace above the title
-	
-	{\LARGE\bfseries \sigleCours \ - \textsc{\titreCours} \par}
-	{\scshape\Large\bfseries \TypeRemise \par}
-	
-	\vspace{0.75\baselineskip} % Whitespace below the title
-	
-	\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal rule
-	\rule{\textwidth}{1.6pt} % Thick horizontal rule
-	
-	\vspace{2cm}
-	{\Large\itshape \CoUn \\ \CoDeux \\ \CoTrois \\ \CoQuatre \par}
-	\vfill
-	Remis à \par
-	{\Large\itshape \NomProf \\}
-
-	\vfill
-
-% Bottom of the page
-	{\large \dateremise \par}
-\end{titlepage}
-\clearpage
-}

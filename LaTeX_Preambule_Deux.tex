@@ -1,0 +1,248 @@
+% NEW CALLIGRAPHY FOR MATH SYMBOLS
+%\usepackage{calligra}
+%\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+
+% Permet de cross-out un morceau d'une equation dans textmode et mathmode sauf \cancelto{\infty}{} qui fonctionne juste en mathmode
+\usepackage[makeroom]{cancel}
+
+
+\usepackage{adjustbox} % adjusting table (too wide) 
+\usepackage{rotating} % sidewaytables
+
+% Makes the env for landscape
+\usepackage{lscape}
+
+
+\usepackage{multicol}
+
+% Modification du format des numéros de pages.
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+%-----------------------------------------------------------------
+%-----------------------------------------------------------------
+%-----------------------------------------------------------------
+
+\newcommand{\CreateurNom}[2]{#1 \textsc{#2}\ }
+\newcommand{\CoUn}{\CreateurNom{\PrenomUn}{\NomUn}}
+\newcommand{\CoDeux}{\CreateurNom{\PrenomDeux}{\NomDeux}}
+\newcommand{\NomProf}{\CreateurNom{\PrenomProf}{\NomFamilleProf}}
+
+%-----------------------------------------------------------------
+% Changement du style de mise en page
+	\pagestyle{fancy}
+	\fancyhf{}
+ 	\fancyhead[L]{\sigleCours \ - \TypeRemise}
+ 	\fancyhead[C]{--- \CoUn -- \CoDeux ---}
+ 	\fancyhead[R]{\dateremise}
+ 	
+ %-----------------------------------------------------------------
+ % Modifier style du numéro de page
+\rfoot{\vspace*{-2em} \thepage /\pageref{LastPage}}
+
+% TITLE PAGE FORMATING
+\newcommand{\TitlePAGE}{
+\begin{titlepage}
+	
+	\centering % Centre everything on the title page
+	
+	\scshape % Use small caps for all text on the title page
+	
+	\vspace*{\baselineskip} % White space at the top of the page
+	%\includegraphics[width=0.15\textwidth]{example-image-1x1}\par\vspace{1cm}
+	{\huge\bfseries \textsc{\Establishment} \par}
+	
+	{\scshape\Large \Department \par}
+	
+	\vspace{2cm}
+	
+	\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} % Thick horizontal rule
+	\rule{\textwidth}{0.4pt} % Thin horizontal rule
+	
+	\vspace{0.75\baselineskip} % Whitespace above the title
+	
+	{\LARGE\bfseries \sigleCours \ - \textsc{\titreCours} \par}
+	{\scshape\Large\bfseries \TypeRemise \par}
+	
+	\vspace{0.75\baselineskip} % Whitespace below the title
+	
+	\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal rule
+	\rule{\textwidth}{1.6pt} % Thick horizontal rule
+	
+	\vspace{2cm}
+	{\Large \CoUn \\ \CoDeux \par}
+	\vfill
+	Remis à \par
+	{\Large \NomProf \\}
+
+	\vfill
+
+% Bottom of the page
+	{\large \dateremise \par}
+\end{titlepage}
+\clearpage
+}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsbsy}
+\usepackage{color}
+\usepackage{dsfont}
+\usepackage{rotating}
+%-----------------------------------------------------------------
+% Permet d'ajouter entre autre, une ligne à gauche des exemples,théorèmes,etc...
+
+
+\usepackage[framemethod=TikZ]{mdframed}
+\newcounter{Question}
+\newcounter{subQcounter}[Question]
+
+\newenvironment{Question}[1][]{%
+	\refstepcounter{Question}% increment the environment's counter
+	\vspace{60pt}
+	\begin{mdframed}[%
+		frametitle={{\huge{#1}}},
+		%frametitlebackgroundcolor=gray!30,
+	    topline=true,
+	    frametitlerule=true,
+	    bottomline=true,
+	    rightline=false,
+	    leftline=true,
+	    nobreak=false,
+	    innerbottommargin=1em,
+		%frametitleaboveskip=10pt, frametitlebelowskip=10pt,
+		font=\Large
+	]%
+\quad }{%
+    \end{mdframed}
+}
+
+% FORMAT DU COMPTEUR DE SOUS QUESTION
+\renewcommand\thesubQcounter{\alph{subQcounter}}
+
+\newenvironment{SousQuestion}[1][]{%
+	\refstepcounter{subQcounter}
+	~\\
+	~\\
+	\fbox{
+	\begin{minipage}{1.0\textwidth}
+	\textbf{$\left(\mathrm{\textbf{\thesubQcounter}}\right)$ #1}
+	\end{minipage}}\\
+	\par
+	}{
+}
+
+\newenvironment{Cas}[1][]{%
+	\begin{mdframed}[%
+		frametitle={#1},
+		frametitlebackgroundcolor=gray!30,
+	    topline=true,
+	    frametitlerule=true,
+	    bottomline=true,
+	    rightline=true,
+	    leftline=true,
+	    nobreak=false,
+	    %innerleftmargin=1.3em,
+		%frametitleaboveskip=10pt, frametitlebelowskip=10pt,
+		font=\Large
+	]%
+\quad }{%
+    \end{mdframed}
+}
+
+%-----------------------------------------------------------------
+%------------------------------
+%Environnements
+%------------------------------
+
+%Format des théorèmes/definitions et exemples
+\theoremstyle{definition}
+
+%--Format de nouvel environnement
+\usepackage{thmtools}
+%\newtheoremstyle{<name>}%
+ % spaceabove={<space above>}%
+ % spacebelow={<space below>}%
+ % {<body font>}%
+ % {<indent amount>}%
+ % headfont={<theorem head font>}%
+ % {<punctuation after theorem head>}%
+ % {<space after theorem>}%
+
+%Format pour des adresse web
+\usepackage{url}
+
+%
+\usepackage{upgreek}
+
+%Tableaux et figures
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage{wrapfig}
+
+%Placer des ancres dans le texte et y faire référence
+\usepackage[pageanchor]{hyperref}
+%Permet que les numéros de pages de la ToC soit des hyperliens
+%\usepackage[linktocpage=true]{hyperref}
+\usepackage{tocloft}
+\renewcommand{\cftparapresnum}{\S}
+
+
+
+%Pour prendre du code R et l'inclure en format LaTeX
+\usepackage{listings}
+
+%-----------------------------------------------------------------
+\definecolor{dkgreen}{rgb}{0,0.4,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+% Inclure code R dans le texte -------------------------
+\lstset{ %
+  language=R,                     % the language of the code
+  basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+  numbers=left,                   % where to put the line-numbers
+  numberstyle=\tiny\color{gray},  % the style that is used for the line-numbers
+  stepnumber=1,                   % the step between two line-numbers. If it's 1, each line
+                                  % will be numbered
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  frame=single,                   % adds a frame around the code
+  rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  title=\lstname,   				 % show the filename of files included with \lstinputlisting;
+  %basicstyle=\large,
+  					                 % also try caption instead of title
+  keywordstyle=\color{blue},      % keyword style
+  commentstyle=\color{dkgreen},   % comment style
+  stringstyle=\color{dkgreen},      % string literal style
+  escapeinside={\%*}{*)},         % if you want to add a comment within your code
+  morekeywords={*,...}            % if you want to add more keywords to the set
+} 
+%------------------------------
+%espacement
+%------------------------------
+\usepackage{setspace}
+%Puis changer les option d'espacement:
+%\doublespacing
+%\singlespacing
+%\onehalfspacing
+%\setstretch{1.2}
+
+%\newcolumntype{C}{ >{\centering\arraybackslash} m{2cm} }
+%\newcolumntype{d}{ >{\centering\arraybackslash} m{0.7cm} }
+\usepackage{xfrac}
+
+\usepackage{colortbl}
+\definecolor{silver}{RGB}{220,220,220}
+
+

@@ -101,7 +101,51 @@
   \oldproof[\underline{\textbf{#1}}]%
 }{\oldendproof}
 
+% PAGE REFERENCING FORMAT
 \def\MPN#1{$^{(#1)}$}
+
+% PROBABILITY
+\def\Pr#1{\mathds{P}\!\left[#1\right]}
+
+% MOMENT GENERATING FUNCITON
+\def\fgm#1#2{\mathcal{M}_{#1}\!\left(#2\right)}
+
+% Derives partielle
+\def\CalcPt#1#2{\left. #1 \right\vert_{#2}} % EVALUATION DE #1 AU POINT #2
+
+\def\partder#1#2{\frac{\partial #2}{\partial #1} } % DERIVE PARTIELLE ORDRE 1 
+\def\partderbar#1#2#3{\CalcPt{\frac{\partial}{\partial #1} #2}{#3}} % DERIVE PARTIELLE ORDRE 1 EN UN POINT
+\def\tpartder#1#2#3{\frac{\partial^{\left(#1\right)}}{\partial #2^{\left(#1\right)}} #3} % DERIVE PARTIELLE ORDRE T
+\def\tpartderbar#1#2#3#4{\CalcPt{\frac{\partial^{\left(#1\right)}}{\partial #2^{\left(#1\right)}} #3}{#4}} % DERIVE PARTIELLE ORDRE T EN UN POINT
+
+%Réels
+\def\R{\mathds{R}}
+%Naturels
+\def\N{\mathds{N}}
+%complexe
+\def\C{\mathds{C}}
+%Rationnels
+\def\Q{\mathds{Q}}
+
+% APPARENCE VECTEUR
+\renewcommand{\vec}[1]{\boldsymbol{#1}}
+
+% Matrix Trace
+\def\tr#1{\mathrm{tr}\!\left(#1\right)}
+
+% MSE Function format
+\def\MSE#1{\mathrm{MSE}\!\left(#1\right)}
+
+\def\parent#1{\left(#1\right)}
+\def\crochet#1{\left[#1\right]}
+
+
+% ______________________________________________________________________________________________
+% //////////////////////////////////////////////////////////////////////////////////////////////////////////
+% STT6615 - SERIES CHRONOLOGIQUES -------------------------------------------------------------
+% \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+% ______________________________________________________________________________________________
+
 
 % Modele AR(p)
 \def\ar#1{$\mathrm{AR}\!\left(#1\right)$}
@@ -120,28 +164,78 @@
 
 \def\prev#1#2#3{{#1}_{#2}^{#3}}
 
-\def\Pr#1{\mathds{P}\!\left[#1\right]}
 
-\def\fgm#1#2{\mathcal{M}_{#1}\!\left(#2\right)}
 
-% Derives partielle
+% ______________________________________________________________________________________________
+% //////////////////////////////////////////////////////////////////////////////////////////////
+% STT6415 - REGRESSION ------------------------------------------------------------------------
+% \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+% ______________________________________________________________________________________________
 
-\def\CalcPt#1#2{\left. #1 \right\vert_{#2}}
 
-\def\partder#1#2{\frac{\partial #2}{\partial #1} }
-\def\partderbar#1#2#3{\CalcPt{\frac{\partial}{\partial #1} #2}{#3}}
-\def\tpartder#1#2#3{\frac{\partial^{\left(#1\right)}}{\partial #2^{\left(#1\right)}} #3}
-\def\tpartderbar#1#2#3#4{\CalcPt{\frac{\partial^{\left(#1\right)}}{\partial #2^{\left(#1\right)}} #3}{#4}}
+\def\expMoinsUn#1{{#1}^{-1}}
+\def\T#1{{#1}^T}
 
-%Réels
-\def\R{\mathds{R}}
-%Naturels
-\def\N{\mathds{N}}
-%complexe
-\def\C{\mathds{C}}
-%Rationnels
-\def\Q{\mathds{Q}}
+\def\y{\vec{y}}
+\def\yT{\T{\vec{y}}}
+\def\X{\vec{X}}
+\def\B{\vec{\beta}}
+\def\BT{\T{\B}}
+\def\Bh{\widehat{\B}}
+\def\Bhs{\Bh_\star}
+\def\tX{\vec{\tilde{X}}}
+\def\XT{\T{\vec{X}}}
+\def\tXT{\T{\vec{\tilde{X}}}}
+\def\g{\vec{\gamma}}
+\def\gh{\widehat{\vec{\gamma}}}
+\def\muh{\widehat{\vec{\mu}}}
+\def\A{\vec{\mathrm{A}}}
+\def\AT{\T{\A}}
+\def\XXT{\expMoinsUn{\left(\XT \X \right)}}
 
-% APPARENCE VECTEUR
-\renewcommand{\vec}[1]{\boldsymbol{#1}}
+
+
+\def\Xu{\X_{\!1}}
+\def\Xd{\X_{\!2}}
+\def\XTu{\T{\Xu}}
+\def\XTd{\T{\Xd}}
+\def\XXTu{\expMoinsUn{\left(\XTu \Xu \right)}}
+\def\XXTd{\expMoinsUn{\left(\XTu \Xd \right)}}
+
+\def\hu{\vec{\mathrm{H}}_{1}}
+\def\h{\vec{\mathrm{H}}}
+\def\Bo{\B_{0}}
+\def\Bu{\B_{1}}
+\def\Bd{\B_{2}}
+
+\def\Bru{\B_{1R}}
+\def\Brd{\B_{2R}}
+\def\Bfu{\B_{1F}}
+\def\Bfd{\B_{2F}}
+
+\def\Bruh{\Bh_{1R}}
+\def\Brdh{\Bh_{2R}}
+\def\Bfuh{\Bh_{1F}}
+\def\Bfdh{\Bh_{2F}}
+
+\def\BTu{\T{\B}_{1}}
+\def\BTd{\T{\B}_{2}}
+
+\def\BTru{\T{\B}_{1R}}
+\def\BTrd{\T{\B}_{2R}}
+\def\BTfu{\T{\B}_{1F}}
+\def\BTfd{\T{\B}_{2F}}
+
+\def\muzh{\widehat{\mu}^0_R}
+
+
+\def\BuhOLS{\Bh_{1,OLS}}
+\def\BuhWLS{\Bh_{1,WLS}}
+
+
+% MATRICE IDENTITE
+\def\Idn#1{\vec{\mathrm{I}}_{#1}}
+
+% overline sigma
+\def\osig{\overline{\sigma^2}}
 

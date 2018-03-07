@@ -1,5 +1,8 @@
 % SHORTCUTS DOCUMENT
 
+% Conditionnelle
+\def\cond#1#2{\left. #1 \vphantom{#2} \right\vert #2}
+
 %operateur e
 \newcommand{\e}[1]{e^{#1}}
 
@@ -7,7 +10,7 @@
 \long\def\esp#1{\mathds{E}\!\left[ #1 \right]}
 
 % Espérance Conditionnelle et indicée
-\long\def\espcond#1#2{\mathds{E}\!\left[ \left. \vphantom{#2} #1 \right\vert #2 \right]}
+\long\def\espcond#1#2{\esp{\cond{#1}{#2}}}
 
 % Espérance Conditionnelle et indicée
 \long\def\EspInd#1#2{\mathds{E}_{#1}\!\left[ #2 \right]}
@@ -17,7 +20,10 @@
 
 
 % Variance
-\long\def\Var#1{\mathds{V}\!ar\!\left[ #1 \right]}
+\long\def\var#1{\mathds{V}\!ar\!\left[ #1 \right]}
+
+% Variance Conditionnelle
+\long\def\varcond#1#2{\mathds{V}\!ar\!\left[ \cond{#1}{#2} \right]}
 
 % Covariance
 \long\def\cov#1#2{\hspace{0.08cm}\mathds{C}\!ov\!\left[ #1 ,#2\right]}
@@ -110,9 +116,10 @@
 % MOMENT GENERATING FUNCITON
 \def\fgm#1#2{\mathcal{M}_{#1}\!\left(#2\right)}
 
-% Derives partielle
+% Calcul en un point
 \def\CalcPt#1#2{\left. #1 \right\vert_{#2}} % EVALUATION
 
+% Derives partielle
 \def\partder#1#2{\frac{\partial #2}{\partial #1} } % DERIVE PARTIELLE ORDRE 1 
 \def\partderbar#1#2#3{\CalcPt{\frac{\partial}{\partial #1} #2}{#3}} % DERIVE PARTIELLE ORDRE 1 EN UN POINT
 \def\tpartder#1#2#3{\frac{\partial^{\left(#1\right)}}{\partial #2^{\left(#1\right)}} #3} % DERIVE PARTIELLE ORDRE T
@@ -130,6 +137,22 @@
 \def\parent#1{\left(#1\right)}
 \def\crochet#1{\left[#1\right]}
 
+\def\expMoinsUn#1{{#1}^{-1}}
+\def\T#1{{#1}^T}
+
+% APPARENCE VECTEUR
+\renewcommand{\vec}[1]{\boldsymbol{#1}}
+% Vecteur ligne
+\def\veclig#1{\vec{\overrightarrow{#1}}}
+
+% ______________________________________________________________________________________________
+% //////////////////////////////////////////////////////////////////////////////////////////////////////////
+% DISTRIBUTIONS PROBABILITÉS -------------------------------------------------------------
+% \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+% ______________________________________________________________________________________________
+
+% NORMALE
+\def\Normale#1#2#3{\mathcal{N}\!\parent{#1_{#3},#2_{#3}}}
 
 % ______________________________________________________________________________________________
 % //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -164,17 +187,11 @@
 % ______________________________________________________________________________________________
 
 
-% APPARENCE VECTEUR
-\renewcommand{\vec}[1]{\boldsymbol{#1}}
-
 % Matrix Trace
 \def\tr#1{\mathrm{tr}\!\left(#1\right)}
 
 % MSE Function format
 \def\MSE#1{\mathrm{MSE}\!\left(#1\right)}
-
-\def\expMoinsUn#1{{#1}^{-1}}
-\def\T#1{{#1}^T}
 
 \def\y{\vec{y}}
 \def\yT{\T{\vec{y}}}

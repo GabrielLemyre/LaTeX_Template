@@ -1,10 +1,11 @@
 \documentclass[10pt,letterpaper]{article}
 \usepackage[utf8]{inputenc}
-\usepackage[francais]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[left=1.5cm,right=1.5cm,top=1.5cm,bottom=1.5cm]{geometry}
 
 % INFORMATIONS À REMPLIR
+% Nombre d'equipiers
+\def\nbequipiers{4} % Laisser les noms inutiles vacants
 % University
 \newcommand{\Establishment}{Concordia University}
 \newcommand{\Department}{Department of Mathematics \& Statistics}
@@ -22,12 +23,19 @@
 % Coéquipier DEUX
 \newcommand{\PrenomDeux}{Edwin}
 \newcommand{\NomDeux}{H. Ng}
+% Coéquipier TROIS
+\newcommand{\PrenomTrois}{Gabriel}
+\newcommand{\NomTrois}{Lemyre}
+% Coéquipier QUATRE
+\newcommand{\PrenomQuatre}{Rémy}
+\newcommand{\NomQuatre}{Vincent}
 % Date de remise
 \newcommand{\dateremise}{February 16, 2018}
 
-
-\input{../LaTeX_Template/Preambule/LaTeX_Preambule_Deux}
-\input{../LaTeX_Template/LaTeX_Shortcuts}
+% Chemin vers le preambule
+\long\def\path{../LaTeX_Template}
+\input{\path/LaTeX_Preambule}
+\input{\path/LaTeX_Shortcuts}
 
 \begin{document}
 \TitlePAGE % Inputs formatted front page

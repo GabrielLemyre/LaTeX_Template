@@ -97,9 +97,6 @@
 
 \def\Rconj{\ovA{$R$}}
 
-% Créer une fonction qui entoure d'un cercle la string
-\usepackage{mathdesign}
-
 % Changer l'environnement de preuve
 \expandafter\let\expandafter\oldproof\csname\string\proof\endcsname
 \let\oldendproof\endproof
@@ -108,7 +105,7 @@
 }{\oldendproof}
 
 % PAGE REFERENCING FORMAT
-\def\MPN#1{$^{(#1)}$}
+\def\MPN#1{\!$^{(p.#1)}$}
 
 % PROBABILITY
 \def\Pr#1{\mathds{P}\!\left[#1\right]}
@@ -138,12 +135,24 @@
 \def\crochet#1{\left[#1\right]}
 
 \def\expMoinsUn#1{{#1}^{-1}}
-\def\T#1{{#1}^T}
+\def\T#1{#1^T}
 
 % APPARENCE VECTEUR
-\renewcommand{\vec}[1]{\boldsymbol{#1}}
-% Vecteur ligne
-\def\veclig#1{\vec{\overrightarrow{#1}}}
+\newcommand{\vecc}[1]{\boldsymbol{#1}}
+\newcommand{\vecl}[1]{\vec{#1}}
+
+\newcommand{\mat}[1]{\begin{bmatrix}
+#1
+\end{bmatrix}}
+
+% MATRICE IDENTITE
+\def\Idn#1{\vecc{\mathrm{I}}_{#1}}
+
+% Vecteur de UN
+\def\vecun#1{\vecc{1}_{#1}}
+
+% Probabilité abréviée
+\def\prob#1{p\!\parent{#1}}
 
 % ______________________________________________________________________________________________
 % //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -250,9 +259,17 @@
 \def\BuhWLS{\Bh_{1,WLS}}
 
 
-% MATRICE IDENTITE
-\def\Idn#1{\vec{\mathrm{I}}_{#1}}
-
 % overline sigma
 \def\osig{\overline{\sigma^2}}
+
+
+
+% ______________________________________________________________________________________________
+% //////////////////////////////////////////////////////////////////////////////////////////////
+% STT6705 - MODELES DE MARKOV A VARIABLE LATENTE ------------------------------------------------------------------------
+% \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+% ______________________________________________________________________________________________
+
+\def\vpi{\vecl{\pi}}
+
 

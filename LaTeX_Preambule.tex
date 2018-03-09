@@ -13,6 +13,9 @@
 \usepackage{color}
 \usepackage{dsfont}
 \usepackage{rotating}
+\usepackage{pdftexcmds}
+
+\DeclareFontShape{OT1}{cmr}{bx}{sc}{<-> cmbcsc10}{}
 
 % NEW CALLIGRAPHY FOR MATH SYMBOLS
 %\usepackage{calligra}
@@ -72,7 +75,7 @@
 	%\includegraphics[width=0.15\textwidth]{example-image-1x1}\par\vspace{1cm}
 	{\huge \scshape{\Establishment} \par}
 	
-	{\scshape\Large \Department \par}
+	{\Large \Department \par}
 	
 	\vspace{2cm}
 	
@@ -134,7 +137,8 @@
 % FORMAT DU COMPTEUR DE SOUS QUESTION
 \renewcommand\thesubQcounter{\Alph{subQcounter}}
 
-\newenvironment{SousQuestion}[1][]{%
+\newenvironment{SousQuestion}[2][]{%
+	
 	\refstepcounter{subQcounter}
 	~\\
 	~\\
@@ -142,7 +146,15 @@
 	\begin{minipage}{1.0\textwidth}
 	\textbf{$\left(\mathrm{\textbf{\thesubQcounter}}\right)$ #1}
 	\end{minipage}}\\
-	\par
+	
+	\def\temp{#2}\ifx\temp\empty
+  		%<EMPTY>
+	\else
+		%<NON EMPTY>
+  		\par #2\\
+		\rule{8cm}{0.6pt}\\
+	\fi
+\par
 	}{
 }
 

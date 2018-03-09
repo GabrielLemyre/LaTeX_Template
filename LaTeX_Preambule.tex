@@ -45,10 +45,12 @@
 \usepackage{ifthen}
 
 \newcommand{\CreateurNom}[2]{#1 {\scshape{#2}}\ }
+
 \ifthenelse{\nbequipiers = 1}{\input{\path/Names/Front_1}}{}
 \ifthenelse{\nbequipiers = 2}{\input{\path/Names/Front_2}}{}
 \ifthenelse{\nbequipiers = 3}{\input{\path/Names/Front_3}}{}
 \ifthenelse{\nbequipiers = 4}{\input{\path/Names/Front_4}}{}
+
 \newcommand{\NomProf}{\CreateurNom{\PrenomProf}{\NomFamilleProf}}
 
 %-----------------------------------------------------------------

@@ -71,21 +71,7 @@
 % Nouveau arctan
 \long\def\arctans#1{\arctan\!\left( #1 \right)}
 
-% VALEURS ABSOLUES ET NORMES
-\usepackage{mathtools}
-\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
-\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
 
-% Swap the definition of \abs* and \norm*, so that \abs
-% and \norm resizes the size of the brackets, and the 
-% starred version does not.
-\makeatletter
-\let\oldabs\abs
-\def\abs{\@ifstar{\oldabs}{\oldabs*}}
-%
-\let\oldnorm\norm
-\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
-\makeatother
 
 \def\rt{$\{r_t\}$\ }
 \def\wt{$\{w_t\}$\ }
@@ -97,13 +83,6 @@
 }
 
 \def\Rconj{\ovA{$R$}}
-
-% Changer l'environnement de preuve
-\expandafter\let\expandafter\oldproof\csname\string\proof\endcsname
-\let\oldendproof\endproof
-\renewenvironment{proof}[1][\proofname]{%
-  \oldproof[\underline{\textbf{#1}}]%
-}{\oldendproof}
 
 % PAGE REFERENCING FORMAT
 \def\MPN#1{\!$^{(p.#1)}$}

@@ -160,6 +160,7 @@
 	}{
 }
 
+
 \newenvironment{Cas}[1][]{%
 	\begin{mdframed}[%
 		frametitle={#1},
@@ -273,3 +274,56 @@
 \definecolor{silver}{RGB}{220,220,220}
 
 
+
+% VALEURS ABSOLUES ET NORMES
+\usepackage{mathtools}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+
+% Changer l'environnement de preuve
+\expandafter\let\expandafter\oldproof\csname\string\proof\endcsname
+\let\oldendproof\endproof
+\renewenvironment{proof}[1][\proofname]{%
+  \oldproof[\underline{\textbf{#1}}]%
+}{\oldendproof}
+
+
+% __________________________________________________________________________________________________
+% INCLUDE BACKGROUND IMAGE
+\usepackage{eso-pic}
+\newcommand\BackgroundPic{%
+\put(0,0){%
+\parbox[b][\paperheight]{\paperwidth}{%
+\vfill
+\centering
+\includegraphics[width=\paperwidth,height=\paperheight,%
+keepaspectratio]{background.png}%
+\vfill
+}}}
+
+% INCLUDE PDF WITH MULTIPLE PAGES TO THE BACKGROUND
+\usepackage{multido}
+\usepackage{ifxetex}
+
+\ifxetex
+    \newcount\pdflastximagepages
+    \newcommand\pdfximage#1{\pdflastximagepages=\XeTeXpdfpagecount"#1"\relax}
+\fi
+\newcommand{\ajoutpdf}[2] {
+    \pdfximage{#1}
+    \multido{\i=1+1}{\the\pdflastximagepages}{%
+    ~
+        \AddToShipoutPicture*{\includegraphics[page=\i,scale=#2]{#1}}
+        \newpage
+    }
+}

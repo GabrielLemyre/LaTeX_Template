@@ -86,9 +86,9 @@
 	
 	\vspace{0.75\baselineskip} % Whitespace above the title
 	
-	{\LARGE \sigleCours \\ \scshape{\titreCours} \par}
+	{\bfseries\LARGE \sigleCours \\ \scshape{\titreCours} \par}
 	\rule{\widthof{\TypeRemise}+\widthof{\TypeRemise}}{1pt} \\
-	{\scshape\Large \TypeRemise \par}
+	{\bfseries\scshape\Large \TypeRemise \par}
 	
 	\vspace{0.75\baselineskip} % Whitespace below the title
 	
@@ -327,3 +327,13 @@ keepaspectratio]{background.png}%
         \newpage
     }
 }
+
+% SETTING FONT FOR WHOLE ROW OF TABULAR
+\usepackage{tabularx}
+\newcommand\setrow[1]{\gdef\rowmac{#1}#1\ignorespaces}
+\newcommand\clearrow{\global\let\rowmac\relax}
+\clearrow
+
+% Exemple :
+% \begin{tabular}[t]{ *{5}{ >{\rowmac} c } <{\clearrow}}  NEEDS >{\rowmac} before every column position call and a <{\clearrow} after all calls
+%\setrow{\bfseries} 2 & 100 & 4 & (1,4,4,0,0) & 4  \\

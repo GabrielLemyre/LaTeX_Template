@@ -21,6 +21,10 @@
 
 \newcommand{\NomProf}{\CreateurNom{\PrenomProfVar}{\NomFamilleProfVar}}
 
+\def\HandedtoText{ % Testing for language on front page
+	\ifthenelse{\equal{\Langue}{francais}}{Remis à}{}
+	\ifthenelse{\equal{\Langue}{english}}{Handed to}{}
+}
 % —————————————————————————————————————————————————
 % Changement du style de mise en page
 	\pagestyle{fancy}
@@ -68,7 +72,7 @@
 	\vspace{2cm}
 	{\Large \nomsjump \par}
 	\vfill
-	Remis à \par
+	\HandedtoText \\
 	{\Large \NomProf \\}
 
 	\vfill

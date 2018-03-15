@@ -1,0 +1,298 @@
+% —————————————————————————————————————————————————
+% //////////////////////////////////////////////////////////////////////////////////////////////
+% ------------------------------ NE PAS MODIFIER CE DOCUMENT ----------------------------------
+% \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+% —————————————————————————————————————————————————
+
+\ProvidesPackage{\path/LaTeX_Preambule}[2018/03/15 package PreamGab]
+% —————————————————————————————————————————————————
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[left=1.5cm,right=1.5cm,top=1.5cm,bottom=1.5cm]{geometry}
+% —————————————————————————————————————————————————
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsbsy}
+\usepackage{color}
+\usepackage{dsfont}
+\usepackage{rotating}
+\usepackage{pdftexcmds}
+\usepackage{mathtools}
+\usepackage{xfrac}
+% —————————————————————————————————————————————————
+%Format pour des adresse web
+\usepackage{url}
+\usepackage{upgreek}
+% —————————————————————————————————————————————————
+%Tableaux et figures
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage{wrapfig}
+% —————————————————————————————————————————————————
+% Permet de cross-out un morceau d'une equation dans textmode et mathmode sauf \cancelto{\infty}{} qui fonctionne juste en mathmode
+\usepackage[makeroom]{cancel}
+% —————————————————————————————————————————————————
+\usepackage{adjustbox} % adjusting table (too wide) 
+\usepackage{rotating} % sidewaytables
+\usepackage{lscape} % Makes the env for landscape
+\usepackage{multicol} % multicols environment
+\usepackage[framemethod=TikZ]{mdframed} % Framed environment
+\usepackage{eso-pic}
+% —————————————————————————————————————————————————
+% Modification du format des numéros de pages.
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{bold-extra}
+% —————————————————————————————————————————————————
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage{multido}
+\usepackage{ifxetex}
+% —————————————————————————————————————————————————
+\usepackage{listings} % Pour prendre du code R et l'inclure en format LaTeX
+\usepackage[pageanchor]{hyperref} % Placer des ancres dans le texte et y faire référence
+% —————————————————————————————————————————————————
+%Permet que les numéros de pages de la ToC soit des hyperliens
+%\usepackage[linktocpage=true]{hyperref}
+\usepackage{tocloft}
+\renewcommand{\cftparapresnum}{\S}
+% —————————————————————————————————————————————————
+% —————————————————————————————————————————————————
+% —————————————————————————————————————————————————
+
+% NEW CALLIGRAPHY FOR MATH SYMBOLS
+%\usepackage{calligra}
+%\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+
+% —————————————————————————————————————————————————
+% //////////////////////////////////////////////////////////////////////////////////////////////
+% NEW ENVIRONMENTS FOR QUESTIONS ------------------------------------------------------------------------
+% \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+% —————————————————————————————————————————————————
+
+\newcounter{Question}
+\newcounter{subQcounter}[Question]
+
+\newenvironment{Question}[1][]{%
+	\refstepcounter{Question}% increment the environment's counter
+	\vspace{60pt}
+	\begin{mdframed}[%
+		frametitle={{\huge{#1}}},
+		%frametitlebackgroundcolor=gray!30,
+	    topline=true,
+	    frametitlerule=true,
+	    bottomline=true,
+	    rightline=false,
+	    leftline=true,
+	    nobreak=false,
+	    innerbottommargin=1em,
+		%frametitleaboveskip=10pt, frametitlebelowskip=10pt,
+		font=\Large
+	]%
+\quad }{%
+    \end{mdframed}
+}
+
+% —————————————————————————————————————————————————
+
+% FORMAT DU COMPTEUR DE SOUS QUESTION
+\renewcommand\thesubQcounter{\alph{subQcounter}}
+
+\newenvironment{SousQuestion}[2][]{%
+	
+	\refstepcounter{subQcounter}
+	~\\
+	~\\
+	\fbox{
+	\begin{minipage}{1.0\textwidth}
+	\textbf{$\left(\mathrm{\textbf{\thesubQcounter}}\right)$ #1}
+	\end{minipage}}\\
+	
+	\def\temp{#2}\ifx\temp\empty % Testing for the 2nd argument's value
+  		%<EMPTY>
+	\else
+		%<NON EMPTY>
+  		\par #2\\
+		\rule{8cm}{0.6pt}\\
+	\fi
+\par
+	}{
+}
+
+% —————————————————————————————————————————————————
+
+\newenvironment{Cas}[1][]{%
+	\begin{mdframed}[%
+		frametitle={#1},
+		frametitlebackgroundcolor=gray!30,
+	    topline=true,
+	    frametitlerule=true,
+	    bottomline=true,
+	    rightline=true,
+	    leftline=true,
+	    nobreak=false,
+	    %innerleftmargin=1.3em,
+		%frametitleaboveskip=10pt, frametitlebelowskip=10pt,
+		font=\Large
+	]%
+\quad }{%
+    \end{mdframed}
+}
+
+% —————————————————————————————————————————————————
+% //////////////////////////////////////////////////////////////////////////////////////////////
+% CREATES THE FUNCTIONS TO INPUT THE DOCUMENT INFORMATION --------------------------------
+% \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+% —————————————————————————————————————————————————
+
+\long\def\INSTITUTION#1{\newcommand{\EstablishmentVar}{#1}} % Institution
+\long\def\DEPARTMENT#1{\newcommand{\DepartmentVar}{#1}} % Department
+\long\def\classSYMBOL#1{\newcommand{\sigleCoursVar}{#1}} % Class info
+\long\def\classTITLE#1{\newcommand{\titreCoursVar}{#1}} % Class info
+\long\def\TEACHER#1#2{\newcommand{\PrenomProfVar}{#1}\newcommand{\NomFamilleProfVar}{#2}} % Teacher
+\long\def\workTITLE#1{\newcommand{\TypeRemiseVar}{#1}} % Work title
+\long\def\ONE#1#2{\newcommand{\PrenomUnVar}{#1}\newcommand{\NomUnVar}{#2}} % Coéquipier UN
+\long\def\TWO#1#2{\newcommand{\PrenomDeuxVar}{#1}\newcommand{\NomDeuxVar}{#2}} % Coéquipier DEUX
+\long\def\THREE#1#2{\newcommand{\PrenomTroisVar}{#1}\newcommand{\NomTroisVar}{#2}} % Coéquipier TROIS
+\long\def\FOUR#1#2{\newcommand{\PrenomQuatreVar}{#1}\newcommand{\NomQuatreVar}{#2}} % Coéquipier QUATRE
+\long\def\DATE#1{\newcommand{\dateremiseVar}{#1}} % Date de remise
+
+% —————————————————————————————————————————————————
+% //////////////////////////////////////////////////////////////////////////////////////////////
+% TYPESETTING FOR R CODE  ------------------------------------------------------------------------
+% \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+% —————————————————————————————————————————————————
+
+\definecolor{dkgreen}{rgb}{0,0.4,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+% Inclure code R dans le texte -------------------------
+\lstset{ %
+  language=R,                     % the language of the code
+  basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+  numbers=left,                   % where to put the line-numbers
+  numberstyle=\tiny\color{gray},  % the style that is used for the line-numbers
+  stepnumber=1,                   % the step between two line-numbers. If it's 1, each line
+                                  % will be numbered
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  frame=single,                   % adds a frame around the code
+  rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  title=\lstname,   				 % show the filename of files included with \lstinputlisting;
+  %basicstyle=\large,
+  					                 % also try caption instead of title
+  keywordstyle=\color{blue},      % keyword style
+  commentstyle=\color{dkgreen},   % comment style
+  stringstyle=\color{dkgreen},      % string literal style
+  escapeinside={\%*}{*)},         % if you want to add a comment within your code
+  morekeywords={*,...}            % if you want to add more keywords to the set
+}
+
+% —————————————————————————————————————————————————
+% //////////////////////////////////////////////////////////////////////////////////////////////
+% MODIFYING EXISTING ENVIRONMENTS  -----------------------------------------------------------------------------------
+% \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+% —————————————————————————————————————————————————
+
+% PROOF ENVIRONMENT
+\expandafter\let\expandafter\oldproof\csname\string\proof\endcsname
+\let\oldendproof\endproof
+\renewenvironment{proof}[1][\proofname]{%
+  \oldproof[\underline{\textbf{#1}}]%
+}{\oldendproof}
+
+%--Format de nouvel environnement
+\usepackage{thmtools}
+%\newtheoremstyle{<name>}%
+ % spaceabove={<space above>}%
+ % spacebelow={<space below>}%
+ % {<body font>}%
+ % {<indent amount>}%
+ % headfont={<theorem head font>}%
+ % {<punctuation after theorem head>}%
+ % {<space after theorem>}%
+
+\usepackage{setspace}
+%Puis changer les option d'espacement:
+%\doublespacing
+%\singlespacing
+%\onehalfspacing
+%\setstretch{1.2}
+
+% VALEURS ABSOLUES ET NORMES (mathtools)
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+
+% NEW FORMAT FOR COLUMNS
+\newcolumntype{C}{ >{\centering\arraybackslash} m{2cm} }
+\newcolumntype{d}{ >{\centering\arraybackslash} m{0.7cm} }
+
+% —————————————————————————————————————————————————
+% //////////////////////////////////////////////////////////////////////////////////////////////
+% INCLUDE BACKGROUND IMAGE  --------------------------------------------------------------------------------------------
+% \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+% —————————————————————————————————————————————————
+
+\newcommand\BackgroundPic{%
+\put(0,0){%
+\parbox[b][\paperheight]{\paperwidth}{%
+\vfill
+\centering
+\includegraphics[width=\paperwidth,height=\paperheight,%
+keepaspectratio]{background.png}%
+\vfill
+}}}
+
+% INCLUDE PDF WITH MULTIPLE PAGES TO THE BACKGROUND
+
+\ifxetex
+    \newcount\pdflastximagepages
+    \newcommand\pdfximage#1{\pdflastximagepages=\XeTeXpdfpagecount"#1"\relax}
+\fi
+\newcommand{\ajoutpdf}[2] {
+    \pdfximage{#1}
+    \multido{\i=1+1}{\the\pdflastximagepages}{%
+    ~
+        \AddToShipoutPicture*{\includegraphics[page=\i,scale=#2]{#1}}
+        \newpage
+    }
+}
+
+% —————————————————————————————————————————————————
+% //////////////////////////////////////////////////////////////////////////////////////////////
+% SETTING FONT FOR WHOLE ROW OF TABULAR (tabularx)  ----------------------------------------------------------
+% \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+% —————————————————————————————————————————————————
+
+\newcommand\setrow[1]{\gdef\rowmac{#1}#1\ignorespaces}
+\newcommand\clearrow{\global\let\rowmac\relax}
+\clearrow
+
+% Exemple :
+% \begin{tabular}[t]{ *{5}{ >{\rowmac} c } <{\clearrow}}  NEEDS >{\rowmac} before every column position call and a <{\clearrow} after all calls
+%\setrow{\bfseries} 2 & 100 & 4 & (1,4,4,0,0) & 4  \\
+
+
+

@@ -13,10 +13,10 @@
 \def\nomsjump{\CoUn \\ \CoDeux \\ \CoTrois \\ \CoQuatre}
 
 \def\noms{
-\ifthenelse{\nbequipiers = 1}{\CoUn}{}
-\ifthenelse{\nbequipiers = 2}{\CoUn -- \CoDeux}{}
-\ifthenelse{\nbequipiers = 3}{\CoUn -- \CoDeux -- \CoTrois}{}
-\ifthenelse{\nbequipiers = 4}{\CoUn -- \CoDeux --- \\ --- \CoTrois -- \CoQuatre}{}
+\ifthenelse{\nbequipiers = 1}{\CoUn}
+\ifthenelse{\nbequipiers = 2}{\CoUn -- \CoDeux}
+\ifthenelse{\nbequipiers = 3}{\CoUn -- \CoDeux -- \CoTrois}
+\ifthenelse{\nbequipiers = 4}{\CoUn -- \CoDeux --- \\ --- \CoTrois -- \CoQuatre}
 }
 
 \newcommand{\NomProf}{\CreateurNom{\PrenomProfVar}{\NomFamilleProfVar}}
@@ -29,9 +29,9 @@
 % Changement du style de mise en page
 	\pagestyle{fancy}
 	\fancyhf{}
- 	\fancyhead[L]{\sigleCoursVar \ - \TypeRemiseVar}
- 	\fancyhead[C]{--- \noms ---}
- 	\fancyhead[R]{\dateremiseVar}
+ 	\fancyhead[L]{\footnotesize{\sigleCoursVar \ - \TypeRemiseVar}}
+ 	\fancyhead[C]{\footnotesize{--- \noms ---}}
+ 	\fancyhead[R]{\footnotesize{\dateremiseVar}}
  	
  % —————————————————————————————————————————————————
  % Modifier style du numéro de page

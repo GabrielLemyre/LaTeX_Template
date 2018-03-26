@@ -13,10 +13,10 @@
 \def\nomsjump{\CoUn \\ \CoDeux \\ \CoTrois \\ \CoQuatre}
 
 \def\noms{
-\ifthenelse{\nbequipiers = 1}{\CoUn}
-\ifthenelse{\nbequipiers = 2}{\CoUn -- \CoDeux}
-\ifthenelse{\nbequipiers = 3}{\CoUn -- \CoDeux -- \CoTrois}
-\ifthenelse{\nbequipiers = 4}{\CoUn -- \CoDeux --- \\ --- \CoTrois -- \CoQuatre}
+\ifthenelse{\nbequipiers = 1}{\CoUn}{\!}
+\ifthenelse{\nbequipiers = 2}{\CoUn -- \CoDeux}{\!}
+\ifthenelse{\nbequipiers = 3}{\CoUn -- \CoDeux -- \CoTrois}{\!}
+\ifthenelse{\nbequipiers = 4}{\CoUn -- \CoDeux --- \\ --- \CoTrois -- \CoQuatre}{\!}
 }
 
 \newcommand{\NomProf}{\CreateurNom{\PrenomProfVar}{\NomFamilleProfVar}}

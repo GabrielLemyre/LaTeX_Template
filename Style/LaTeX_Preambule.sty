@@ -100,9 +100,9 @@
 % —————————————————————————————————————————————————
 
 % FORMAT DU COMPTEUR DE SOUS QUESTION
-\renewcommand\thesubQcounter{\alph{subQcounter}}
-
-\newenvironment{SousQuestion}[2][]{%
+\renewcommand\thesubQcounter{\Alph{subQcounter}}
+% Automatically numbered subQuestion env.
+\newenvironment{SousQuestionNum}[2][]{%
 	
 	\refstepcounter{subQcounter}
 	~\\
@@ -110,6 +110,32 @@
 	\fbox{
 	\begin{minipage}{1.0\textwidth}
 	\textbf{$\left(\mathrm{\textbf{\thesubQcounter}}\right)$ #1}
+	\end{minipage}}\\
+	
+	\def\temp{#2}\ifx\temp\empty % Testing for the 2nd argument's value
+  		%<EMPTY>
+	\else
+		%<NON EMPTY>
+  		\par #2\\
+		\rule{8cm}{0.6pt}\\
+	\fi
+\par
+	}{
+}
+
+% —————————————————————————————————————————————————
+
+% —————————————————————————————————————————————————
+
+% FORMAT DU COMPTEUR DE SOUS QUESTION
+
+\newenvironment{SousQuestion}[2][]{%
+	
+	~\\
+	~\\
+	\fbox{
+	\begin{minipage}{1.0\textwidth}
+	\textbf{$\left.\mathrm{\textbf{#1}}\right)$}
 	\end{minipage}}\\
 	
 	\def\temp{#2}\ifx\temp\empty % Testing for the 2nd argument's value

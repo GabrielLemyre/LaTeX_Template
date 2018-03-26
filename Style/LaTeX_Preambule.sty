@@ -282,30 +282,30 @@
 % \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 % —————————————————————————————————————————————————
 
-\newcommand\BackgroundPic{%
-\put(0,0){%
-\parbox[b][\paperheight]{\paperwidth}{%
-\vfill
-\centering
-\includegraphics[width=\paperwidth,height=\paperheight,%
-keepaspectratio]{background.png}%
-\vfill
-}}}
-
-% INCLUDE PDF WITH MULTIPLE PAGES TO THE BACKGROUND
-
-\ifxetex
-    \newcount\pdflastximagepages
-    \newcommand\pdfximage#1{\pdflastximagepages=\XeTeXpdfpagecount"#1"\relax}
-\fi
-\newcommand{\ajoutpdf}[2] {
-    \pdfximage{#1}
-    \multido{\i=1+1}{\the\pdflastximagepages}{%
-    ~
-        \AddToShipoutPicture*{\includegraphics[page=\i,scale=#2]{#1}}
-        \newpage
-    }
-}
+%\newcommand\BackgroundPic{%
+%\put(0,0){%
+%\parbox[b][\paperheight]{\paperwidth}{%
+%\vfill
+%\centering
+%\includegraphics[width=\paperwidth,height=\paperheight,%
+%keepaspectratio]{background.png}%
+%\vfill
+%}}}
+%
+%% INCLUDE PDF WITH MULTIPLE PAGES TO THE BACKGROUND
+%
+%\ifxetex
+%    \newcount\pdflastximagepages
+%    \newcommand\pdfximage#1{\pdflastximagepages=\XeTeXpdfpagecount"#1"\relax}
+%\fi
+%\newcommand{\ajoutpdf}[2] {
+%    \pdfximage{#1}
+%    \multido{\i=1+1}{\the\pdflastximagepages}{%
+%    ~
+%        \AddToShipoutPicture*{\includegraphics[page=\i,scale=#2]{#1}}
+%        \newpage
+%    }
+%}
 
 % —————————————————————————————————————————————————
 % //////////////////////////////////////////////////////////////////////////////////////////////

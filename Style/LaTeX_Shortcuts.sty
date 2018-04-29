@@ -89,6 +89,15 @@
 % \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 % —————————————————————————————————————————————————
 
+\newcommand*{\mathcolor}{}
+\def\mathcolor#1#{\mathcoloraux{#1}}
+\newcommand*{\mathcoloraux}[3]{%
+  \protect\leavevmode
+  \begingroup
+    \color#1{#2}#3%
+  \endgroup
+}
+
 % Conditionnelle
 \def\cond#1#2{\left. #1 \vphantom{#2} \right\vert #2}
 
@@ -231,11 +240,11 @@
 % —————————————————————————————————————————————————
 
 % NORMALE
-\def\Normale#1#2#3{
-\def\temp{#3}\ifx\temp\empty % Testing for the 2nd argument's value
-  		\mathcal{N}\!\parent{#1,#2}
+\def\Normale#1#2#3#4{
+\def\temp{#4}\ifx\temp\empty % Testing for the 2nd argument's value
+  		\mathcal{N}_{#1}\parent{#2,#3}
 	\else
-		\mathcal{N}\!\parent{#1_{#3},#2_{#3}}
+		\mathcal{N}_{#1}\parent{#2_{#4},#3_{#4}}
 	\fi
 }
 

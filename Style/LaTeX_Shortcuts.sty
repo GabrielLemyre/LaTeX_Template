@@ -89,11 +89,51 @@
 % \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 % —————————————————————————————————————————————————
 
+% ————————————————
+% COLORING TEXT IN MATH MODE
+% ————————————————
+\newcommand*{\mathcolor}{}
+\def\mathcolor#1#{\mathcoloraux{#1}}
+\newcommand*{\mathcoloraux}[3]{%
+  \protect\leavevmode
+  \begingroup
+    \color#1{#2}#3%
+  \endgroup
+}
+
+% ————————————————
+% PARANTHÈSES
+% ————————————————
+\def\parent#1{\!\left(#1\right)}
+
+% ————————————————
+% CROCHETS
+% ————————————————
+\def\crochet#1{\left[#1\right]}
+
+% ————————————————
+% ACCOLADES
+% ————————————————
+\def\accolade#1{\left\{ #1 \right\} }
+
+% ————————————————
 % Conditionnelle
-\def\cond#1#2{\left. #1 \vphantom{#2} \right\vert #2}
+% ————————————————
+\def\cond#1#2{\left. #1\ \vphantom{#2} \right\vert #2}
+
+% ————————————————
+% PROBABILITÉ 
+% ————————————————
+\def\prob#1{p\parent{#1}}
+
+% ————————————————
+% PROBABILITÉ CONDITIONNELLE
+% ————————————————
+\def\probcond#1#2{p\parent{\cond{#1}{#2}}}
 
 %operateur e
 \newcommand{\e}[1]{e^{#1}}
+\renewcommand{\exp}[1]{\ \mathrm{exp}\!\accolade{ #1 } }
 
 % Espérance 
 \long\def\Esp#1{\mathds{E}\!\left[ #1 \right]}
@@ -187,9 +227,6 @@
 %Rationnels
 \def\Q{\mathds{Q}}
 
-\def\parent#1{\left(#1\right)}
-\def\crochet#1{\left[#1\right]}
-
 \def\expMoinsUn#1{{#1}^{-1}}
 \def\T#1{#1'}
 
@@ -206,8 +243,6 @@
 % Vecteur de UN
 \def\vecun#1{\vecc{1}_{#1}}
 
-% Probabilité abréviée
-\def\prob#1{p\!\parent{#1}}
 
 % Function syntax
 \newcommand{\fun}[3]{#1\!\parent{#2;#3}}
@@ -224,7 +259,17 @@
 % —————————————————————————————————————————————————
 
 % NORMALE
-\def\Normale#1#2#3{\mathcal{N}\!\parent{#1_{#3},#2_{#3}}}
+\def\Normale#1#2#3#4{
+\def\temp{#4}\ifx\temp\empty % Testing for the 2nd argument's value
+  		\mathcal{N}_{#1}\parent{#2,#3}
+	\else
+		\mathcal{N}_{#1}\parent{#2_{#4},#3_{#4}}
+	\fi
+}
+
+\def\densNormale#1#2#3{
+	\frac{1}{\sqrt{2\pi #3}}\exp{ \frac{-1}{2 #3} \parent{#1 - #2}^2 }
+}
 
 % —————————————————————————————————————————————————
 % //////////////////////////////////////////////////////////////////////////////////////////////
@@ -334,4 +379,9 @@
 
 \def\vpi{\vecl{\pi}}
 
+\def\Ptt#1{\mathrm{P}\!_{\cond{t}{#1}}\ \!\!}
+\def\Pttc#1{\mathrm{P}\!_{\cond{t+1}{#1}}\ \!\!}
+\def\ctt#1{\hat{c}\!_{\cond{t}{#1}}\ \!\!}
+\def\cttc#1{\hat{c}\!_{\cond{t+1}{#1}}\ \!\!}
 
+\def\sig#1{\sigma_{#1}}

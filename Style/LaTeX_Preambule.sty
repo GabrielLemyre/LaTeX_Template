@@ -64,7 +64,34 @@
 \renewcommand{\cftparapresnum}{\S}
 % —————————————————————————————————————————————————
 % —————————————————————————————————————————————————
+
 % —————————————————————————————————————————————————
+% //////////////////////////////////////////////////////////////////////////////////////////////
+% CREATES THE FUNCTIONS TO INPUT THE DOCUMENT INFORMATION --------------------------------
+% \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+% —————————————————————————————————————————————————
+
+\long\def\LANGUAGE#1{\newcommand{\Langue}{#1}} % Langue du texte
+\long\def\INSTITUTION#1{\newcommand{\EstablishmentVar}{#1}} % Institution
+\long\def\DEPARTMENT#1{\newcommand{\DepartmentVar}{#1}} % Department
+\long\def\classSYMBOL#1{\newcommand{\sigleCoursVar}{#1}} % Class info
+\long\def\classTITLE#1{\newcommand{\titreCoursVar}{#1}} % Class info
+\long\def\TEACHER#1#2{\newcommand{\PrenomProfVar}{#1}\newcommand{\NomFamilleProfVar}{#2}} % Teacher
+\long\def\workTITLE#1{\newcommand{\TypeRemiseVar}{#1}} % Work title
+\long\def\ONE#1#2{\newcommand{\PrenomUnVar}{#1}\newcommand{\NomUnVar}{#2}} % Coéquipier UN
+\long\def\TWO#1#2{\newcommand{\PrenomDeuxVar}{#1}\newcommand{\NomDeuxVar}{#2}} % Coéquipier DEUX
+\long\def\THREE#1#2{\newcommand{\PrenomTroisVar}{#1}\newcommand{\NomTroisVar}{#2}} % Coéquipier TROIS
+\long\def\FOUR#1#2{\newcommand{\PrenomQuatreVar}{#1}\newcommand{\NomQuatreVar}{#2}} % Coéquipier QUATRE
+\long\def\DATE#1{\newcommand{\dateremiseVar}{#1}} % Date de remise
+
+% —————————————————————————————————————————————————
+
+\def\HandedtoText{ % Testing for language on front page
+	\ifthenelse{\equal{\Langue}{francais}}{Remis à}{}%
+	\ifthenelse{\equal{\Langue}{francaisRapport}}{Sous la supervision de}{}%
+	\ifthenelse{\equal{\Langue}{english}}{Handed to}{}%
+	\ifthenelse{\equal{\Langue}{englishReport}}{Under the supervision of}{}%
+}%
 
 % NEW CALLIGRAPHY FOR MATH SYMBOLS
 %\usepackage{calligra}
@@ -178,24 +205,6 @@
     \end{mdframed}
 }
 
-% —————————————————————————————————————————————————
-% //////////////////////////////////////////////////////////////////////////////////////////////
-% CREATES THE FUNCTIONS TO INPUT THE DOCUMENT INFORMATION --------------------------------
-% \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-% —————————————————————————————————————————————————
-
-\long\def\LANGUAGE#1{\newcommand{\Langue}{#1}} % Langue du texte
-\long\def\INSTITUTION#1{\newcommand{\EstablishmentVar}{#1}} % Institution
-\long\def\DEPARTMENT#1{\newcommand{\DepartmentVar}{#1}} % Department
-\long\def\classSYMBOL#1{\newcommand{\sigleCoursVar}{#1}} % Class info
-\long\def\classTITLE#1{\newcommand{\titreCoursVar}{#1}} % Class info
-\long\def\TEACHER#1#2{\newcommand{\PrenomProfVar}{#1}\newcommand{\NomFamilleProfVar}{#2}} % Teacher
-\long\def\workTITLE#1{\newcommand{\TypeRemiseVar}{#1}} % Work title
-\long\def\ONE#1#2{\newcommand{\PrenomUnVar}{#1}\newcommand{\NomUnVar}{#2}} % Coéquipier UN
-\long\def\TWO#1#2{\newcommand{\PrenomDeuxVar}{#1}\newcommand{\NomDeuxVar}{#2}} % Coéquipier DEUX
-\long\def\THREE#1#2{\newcommand{\PrenomTroisVar}{#1}\newcommand{\NomTroisVar}{#2}} % Coéquipier TROIS
-\long\def\FOUR#1#2{\newcommand{\PrenomQuatreVar}{#1}\newcommand{\NomQuatreVar}{#2}} % Coéquipier QUATRE
-\long\def\DATE#1{\newcommand{\dateremiseVar}{#1}} % Date de remise
 
 % —————————————————————————————————————————————————
 % //////////////////////////////////////////////////////////////////////////////////////////////

@@ -56,12 +56,24 @@
 \usepackage{ifxetex}
 % —————————————————————————————————————————————————
 \usepackage{listings} % Pour prendre du code R et l'inclure en format LaTeX
-\usepackage[pageanchor]{hyperref} % Placer des ancres dans le texte et y faire référence
+\usepackage[pageanchor, linktocpage=true]{hyperref} % Placer des ancres dans le texte et y faire référence
+
 % —————————————————————————————————————————————————
-%Permet que les numéros de pages de la ToC soit des hyperliens
+%Permet que les numéros de pages et titres de la ToC soit des hyperliens
 %\usepackage[linktocpage=true]{hyperref}
 \usepackage{tocloft}
 \renewcommand{\cftparapresnum}{\S}
+\makeatletter
+\renewcommand{\@pnumwidth}{1.75em}
+\renewcommand{\@tocrmarg}{2.75em}
+\makeatother
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=red,
+    linktoc=all
+}
 % —————————————————————————————————————————————————
 % —————————————————————————————————————————————————
 

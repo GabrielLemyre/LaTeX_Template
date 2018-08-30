@@ -1,0 +1,45 @@
+\documentclass[10pt,letterpaper]{article}
+\long\def\path{../LaTeX_Template/Style} % Path to the external style files
+\usepackage{\path/LaTeX_Preambule} % Style file
+% —————————————————————————————————————————————————
+\def\nbequipiers{1} % NUMBER OF TEAMATES FROM {1,...,4}
+\LANGUAGE{francaisRapport} % {francais, english} for the front page
+\INSTITUTION{•}
+\DEPARTMENT{•}
+\classSYMBOL{•}
+\classTITLE{•}
+\TEACHER{•}{•}
+\workTITLE{•}
+\DATE{•}
+% TEAMATES
+\ONE{•}{•}
+\TWO{}{}
+\THREE{}{}
+\FOUR{}{}
+% —————————————————————————————————————————————————
+\usepackage{\path/LaTeX_Shortcuts} % Inputs the front page, top banner format and other userdefined macros
+\begin{document}
+\TitlePAGE % Inputs formatted front page
+% —————————————————————————————————————————————————
+% //////////////////////////////////////////////////////////////////////////////////////////////
+% REPORT STARTS HERE ——————————————————————————————————————
+% \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+% —————————————————————————————————————————————————
+\pagenumbering{gobble}
+\renewcommand{\contentsname}{Table des matières}%
+\hypertarget{ToC}{\tableofcontents}
+\addtocontents{toc}{~\hfill\textbf{Page}\par}
+\newpage
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\section*{Notations et abréviations utilisées}
+\addcontentsline{toc}{section}{Notations et abréviations utilisées}
+\begin{tabular}{clc}
+ \hline \\
+%%%%%%%%%%%%%%%
+\end{tabular}
+\newpage
+
+
+\end{document}

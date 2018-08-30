@@ -56,15 +56,54 @@
 \usepackage{ifxetex}
 % —————————————————————————————————————————————————
 \usepackage{listings} % Pour prendre du code R et l'inclure en format LaTeX
-\usepackage[pageanchor]{hyperref} % Placer des ancres dans le texte et y faire référence
+\usepackage[pageanchor, linktocpage=true]{hyperref} % Placer des ancres dans le texte et y faire référence
+
 % —————————————————————————————————————————————————
-%Permet que les numéros de pages de la ToC soit des hyperliens
+%Permet que les numéros de pages et titres de la ToC soit des hyperliens
 %\usepackage[linktocpage=true]{hyperref}
 \usepackage{tocloft}
 \renewcommand{\cftparapresnum}{\S}
+\makeatletter
+\renewcommand{\@pnumwidth}{1.75em}
+\renewcommand{\@tocrmarg}{2.75em}
+\makeatother
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=red,
+    linktoc=all
+}
 % —————————————————————————————————————————————————
 % —————————————————————————————————————————————————
+
 % —————————————————————————————————————————————————
+% //////////////////////////////////////////////////////////////////////////////////////////////
+% CREATES THE FUNCTIONS TO INPUT THE DOCUMENT INFORMATION --------------------------------
+% \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+% —————————————————————————————————————————————————
+
+\long\def\LANGUAGE#1{\newcommand{\Langue}{#1}} % Langue du texte
+\long\def\INSTITUTION#1{\newcommand{\EstablishmentVar}{#1}} % Institution
+\long\def\DEPARTMENT#1{\newcommand{\DepartmentVar}{#1}} % Department
+\long\def\classSYMBOL#1{\newcommand{\sigleCoursVar}{#1}} % Class info
+\long\def\classTITLE#1{\newcommand{\titreCoursVar}{#1}} % Class info
+\long\def\TEACHER#1#2{\newcommand{\PrenomProfVar}{#1}\newcommand{\NomFamilleProfVar}{#2}} % Teacher
+\long\def\workTITLE#1{\newcommand{\TypeRemiseVar}{#1}} % Work title
+\long\def\ONE#1#2{\newcommand{\PrenomUnVar}{#1}\newcommand{\NomUnVar}{#2}} % Coéquipier UN
+\long\def\TWO#1#2{\newcommand{\PrenomDeuxVar}{#1}\newcommand{\NomDeuxVar}{#2}} % Coéquipier DEUX
+\long\def\THREE#1#2{\newcommand{\PrenomTroisVar}{#1}\newcommand{\NomTroisVar}{#2}} % Coéquipier TROIS
+\long\def\FOUR#1#2{\newcommand{\PrenomQuatreVar}{#1}\newcommand{\NomQuatreVar}{#2}} % Coéquipier QUATRE
+\long\def\DATE#1{\newcommand{\dateremiseVar}{#1}} % Date de remise
+
+% —————————————————————————————————————————————————
+
+\def\HandedtoText{ % Testing for language on front page
+	\ifthenelse{\equal{\Langue}{francais}}{Remis à}{}%
+	\ifthenelse{\equal{\Langue}{francaisRapport}}{Sous la supervision de}{}%
+	\ifthenelse{\equal{\Langue}{english}}{Handed to}{}%
+	\ifthenelse{\equal{\Langue}{englishReport}}{Under the supervision of}{}%
+}%
 
 % NEW CALLIGRAPHY FOR MATH SYMBOLS
 %\usepackage{calligra}
@@ -96,14 +135,13 @@
 		font=\Large
 	]%
 	\def\temp{#2}\ifx\temp\empty % Testing for the 2nd argument's value
-  		%<EMPTY>
+  		 %
 	\else
 		%<NON EMPTY>
-  		\par #2\\
+  		 ~\\ \vspace{-1em} \par #2\\
 		\rule{8cm}{0.6pt}\\
 	\fi
-\par
-\quad }{%
+~\\ \vspace{-1em} \par }{%
     \end{mdframed}
 }
 
@@ -179,24 +217,6 @@
     \end{mdframed}
 }
 
-% —————————————————————————————————————————————————
-% //////////////////////////////////////////////////////////////////////////////////////////////
-% CREATES THE FUNCTIONS TO INPUT THE DOCUMENT INFORMATION --------------------------------
-% \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-% —————————————————————————————————————————————————
-
-\long\def\LANGUAGE#1{\newcommand{\Langue}{#1}} % Langue du texte
-\long\def\INSTITUTION#1{\newcommand{\EstablishmentVar}{#1}} % Institution
-\long\def\DEPARTMENT#1{\newcommand{\DepartmentVar}{#1}} % Department
-\long\def\classSYMBOL#1{\newcommand{\sigleCoursVar}{#1}} % Class info
-\long\def\classTITLE#1{\newcommand{\titreCoursVar}{#1}} % Class info
-\long\def\TEACHER#1#2{\newcommand{\PrenomProfVar}{#1}\newcommand{\NomFamilleProfVar}{#2}} % Teacher
-\long\def\workTITLE#1{\newcommand{\TypeRemiseVar}{#1}} % Work title
-\long\def\ONE#1#2{\newcommand{\PrenomUnVar}{#1}\newcommand{\NomUnVar}{#2}} % Coéquipier UN
-\long\def\TWO#1#2{\newcommand{\PrenomDeuxVar}{#1}\newcommand{\NomDeuxVar}{#2}} % Coéquipier DEUX
-\long\def\THREE#1#2{\newcommand{\PrenomTroisVar}{#1}\newcommand{\NomTroisVar}{#2}} % Coéquipier TROIS
-\long\def\FOUR#1#2{\newcommand{\PrenomQuatreVar}{#1}\newcommand{\NomQuatreVar}{#2}} % Coéquipier QUATRE
-\long\def\DATE#1{\newcommand{\dateremiseVar}{#1}} % Date de remise
 
 % —————————————————————————————————————————————————
 % //////////////////////////////////////////////////////////////////////////////////////////////
@@ -292,30 +312,29 @@
 % \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 % —————————————————————————————————————————————————
 
-%\newcommand\BackgroundPic{%
-%\put(0,0){%
-%\parbox[b][\paperheight]{\paperwidth}{%
-%\vfill
-%\centering
-%\includegraphics[width=\paperwidth,height=\paperheight,%
-%keepaspectratio]{background.png}%
-%\vfill
-%}}}
-%
-%% INCLUDE PDF WITH MULTIPLE PAGES TO THE BACKGROUND
-%
-%\ifxetex
-%    \newcount\pdflastximagepages
-%    \newcommand\pdfximage#1{\pdflastximagepages=\XeTeXpdfpagecount"#1"\relax}
-%\fi
-%\newcommand{\ajoutpdf}[2] {
-%    \pdfximage{#1}
-%    \multido{\i=1+1}{\the\pdflastximagepages}{%
-%    ~
-%        \AddToShipoutPicture*{\includegraphics[page=\i,scale=#2]{#1}}
-%        \newpage
-%    }
-%}
+\newcommand\BackgroundPic{%
+\put(0,0){%
+\parbox[b][\paperheight]{\paperwidth}{%
+\vfill
+\centering
+\includegraphics[width=\paperwidth,height=\paperheight,%
+keepaspectratio]{background.png}%
+\vfill
+}}}
+
+\ifxetex
+    \newcount\pdflastximagepages
+    \newcommand\pdfximage#1{\pdflastximagepages=\XeTeXpdfpagecount"#1"\relax}
+\fi
+\newcommand{\ajoutpdf}[2] {
+    \pdfximage{#1}
+    \multido{\i=1+1}{\the\pdflastximagepages}{%
+    ~
+        \AddToShipoutPicture*{\includegraphics[page=\i,scale=#2]{#1}}
+        \newpage
+    }
+    
+}
 
 % —————————————————————————————————————————————————
 % //////////////////////////////////////////////////////////////////////////////////////////////

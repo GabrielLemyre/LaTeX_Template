@@ -6,9 +6,11 @@
 
 \ProvidesPackage{\path/LaTeX_Preambule}[2018/03/15 package PreamGab]
 % —————————————————————————————————————————————————
+\usepackage{textcomp}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[left=1cm,right=1.5cm,top=1.5cm,bottom=1.5cm]{geometry}
+\usepackage[french]{babel}
 % —————————————————————————————————————————————————
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -27,6 +29,9 @@
 \usepackage{url}
 \usepackage{upgreek}
 % —————————————————————————————————————————————————
+%Bibliographie
+\usepackage[style=numeric, backend=bibtex]{biblatex}
+% —————————————————————————————————————————————————
 %Tableaux et figures
 \usepackage{tabularx}
 \usepackage{graphicx}
@@ -34,6 +39,7 @@
 \usepackage{caption}
 \usepackage{booktabs}
 \usepackage{wrapfig}
+\usepackage{longtable}
 % —————————————————————————————————————————————————
 % Permet de cross-out un morceau d'une equation dans textmode et mathmode sauf \cancelto{\infty}{} qui fonctionne juste en mathmode
 \usepackage[makeroom]{cancel}
@@ -44,6 +50,10 @@
 \usepackage{multicol} % multicols environment
 \usepackage[framemethod=TikZ]{mdframed} % Framed environment
 \usepackage{eso-pic}
+
+
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{listings,breakable}
 % —————————————————————————————————————————————————
 % Modification du format des numéros de pages.
 \usepackage{fancyhdr}
@@ -74,12 +84,15 @@
     urlcolor=red,
     linktoc=all
 }
+
+\renewcommand{\cftsecleader}{ \ \ \color{lightgray}\hrulefill}
+%\renewcommand{\cftsubsecleader}{ \cftdotfill{1}}
 % —————————————————————————————————————————————————
 % —————————————————————————————————————————————————
 
 % —————————————————————————————————————————————————
 % //////////////////////////////////////////////////////////////////////////////////////////////
-% CREATES THE FUNCTIONS TO INPUT THE DOCUMENT INFORMATION --------------------------------
+% CREATES THE FUNCTIONS TO INPUT THE DOCUMENT INFORMATION -------------------------------------
 % \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 % —————————————————————————————————————————————————
 
@@ -111,7 +124,7 @@
 
 % —————————————————————————————————————————————————
 % //////////////////////////////////////////////////////////////////////////////////////////////
-% NEW ENVIRONMENTS FOR QUESTIONS ------------------------------------------------------------------------
+% NEW ENVIRONMENTS FOR QUESTIONS --------------------------------------------------------------
 % \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 % —————————————————————————————————————————————————
 
@@ -220,7 +233,7 @@
 
 % —————————————————————————————————————————————————
 % //////////////////////////////////////////////////////////////////////////////////////////////
-% TYPESETTING FOR R CODE  ------------------------------------------------------------------------
+% TYPESETTING FOR R CODE  ---------------------------------------------------------------------
 % \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 % —————————————————————————————————————————————————
 
@@ -229,37 +242,93 @@
 \definecolor{mauve}{rgb}{0.58,0,0.82}
 
 % Inclure code R dans le texte -------------------------
-\lstset{ %
-  language=R,                     % the language of the code
-  basicstyle=\footnotesize,       % the size of the fonts that are used for the code
-  numbers=left,                   % where to put the line-numbers
-  numberstyle=\tiny\color{gray},  % the style that is used for the line-numbers
-  stepnumber=1,                   % the step between two line-numbers. If it's 1, each line
-                                  % will be numbered
-  numbersep=5pt,                  % how far the line-numbers are from the code
-  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
-  showspaces=false,               % show spaces adding particular underscores
-  showstringspaces=false,         % underline spaces within strings
-  showtabs=false,                 % show tabs within strings adding particular underscores
-  frame=single,                   % adds a frame around the code
-  rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
-  tabsize=2,                      % sets default tabsize to 2 spaces
-  captionpos=b,                   % sets the caption-position to bottom
-  breaklines=true,                % sets automatic line breaking
-  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
-  title=\lstname,   				 % show the filename of files included with \lstinputlisting;
-  %basicstyle=\large,
-  					                 % also try caption instead of title
-  keywordstyle=\color{blue},      % keyword style
-  commentstyle=\color{dkgreen},   % comment style
-  stringstyle=\color{dkgreen},      % string literal style
-  escapeinside={\%*}{*)},         % if you want to add a comment within your code
-  morekeywords={*,...}            % if you want to add more keywords to the set
-}
+%\lstset{ %
+%  language=R,                     % the language of the code
+%  basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+%  numbers=left,                   % where to put the line-numbers
+%  numberstyle=\tiny\color{gray},  % the style that is used for the line-numbers
+%  stepnumber=1,                   % the step between two line-numbers. If it's 1, each line
+%                                  % will be numbered
+%  numbersep=5pt,                  % how far the line-numbers are from the code
+%  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+%  showspaces=false,               % show spaces adding particular underscores
+%  showstringspaces=false,         % underline spaces within strings
+%  showtabs=false,                 % show tabs within strings adding particular underscores
+%  frame=single,                   % adds a frame around the code
+%  rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+%  tabsize=2,                      % sets default tabsize to 2 spaces
+%  captionpos=b,                   % sets the caption-position to bottom
+%  breaklines=true,                % sets automatic line breaking
+%  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+%  title=\lstname,   				 % show the filename of files included with \lstinputlisting;
+%  %basicstyle=\large,
+%  					                 % also try caption instead of title
+%  keywordstyle=\color{blue},      % keyword style
+%  commentstyle=\color{dkgreen},   % comment style
+%  stringstyle=\color{dkgreen},      % string literal style
+%  escapeinside={\%*}{*)},         % if you want to add a comment within your code
+%  morekeywords={*,...}            % if you want to add more keywords to the set
+%}
+
 
 % —————————————————————————————————————————————————
 % //////////////////////////////////////////////////////////////////////////////////////////////
-% MODIFYING EXISTING ENVIRONMENTS  -----------------------------------------------------------------------------------
+% TYPESETTING FOR PYTHON CODE  ----------------------------------------------------------------
+% \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+% —————————————————————————————————————————————————
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+\lstset{literate=
+  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+  {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+  {€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
+  {»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1
+}
+
+
+\newtcblisting{inPython}[1]{%
+title = {#1}, 
+fonttitle=\sffamily\bfseries,
+   listing only, 
+   label = lst:python, 
+   colframe = blue!50!black,
+   %colback = yellow!10, 
+   enhanced,
+   attach boxed title to top left = {xshift=5pt, yshift=-5pt},
+   listing options={
+   	language=python,
+  	%backgroundcolor=\color{white},   % choose the background color
+  	basicstyle=\footnotesize,        % size of fonts used for the code
+  	breaklines=true,                 % automatic line breaking only at whitespace
+  	captionpos=b,                    % sets the caption-position to bottom
+  	emph = {__init__},
+  	emphstyle={\color{blue}\textbf},
+  	commentstyle=\color{deepgreen},    % comment style
+  	escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  	keywordstyle=\color{blue},       % keyword style
+  	stringstyle=\color{mauve}     % string literal style
+  }}
+
+	
+% —————————————————————————————————————————————————
+% //////////////////////////////////////////////////////////////////////////////////////////////
+% MODIFYING EXISTING ENVIRONMENTS -------------------------------------------------------------
 % \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 % —————————————————————————————————————————————————
 
@@ -308,7 +377,7 @@
 
 % —————————————————————————————————————————————————
 % //////////////////////////////////////////////////////////////////////////////////////////////
-% INCLUDE BACKGROUND IMAGE  --------------------------------------------------------------------------------------------
+% INCLUDE BACKGROUND IMAGE  -------------------------------------------------------------------
 % \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 % —————————————————————————————————————————————————
 
@@ -338,7 +407,7 @@ keepaspectratio]{background.png}%
 
 % —————————————————————————————————————————————————
 % //////////////////////////////////////////////////////////////////////////////////////////////
-% SETTING FONT FOR WHOLE ROW OF TABULAR (tabularx)  ----------------------------------------------------------
+% SETTING FONT FOR WHOLE ROW OF TABULAR (tabularx)  -------------------------------------------
 % \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 % —————————————————————————————————————————————————
 \newcommand{\rot}{\rotatebox{90}}

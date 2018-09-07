@@ -88,6 +88,11 @@
 % —————————————————————————————————————————————————
 
 % ————————————————
+% FONT FOR PACKAGES LOOK
+% ————————————————
+\newcommand{\pkg}[1]{{\fontseries{b}\selectfont #1}} 
+
+% ————————————————
 % COLORING TEXT IN MATH MODE
 % ————————————————
 \newcommand*{\mathcolor}{}
@@ -123,6 +128,11 @@
 % LOGARITHME 
 % ————————————————
 \renewcommand{\log}[1]{\mathrm{log}\parent{#1}}
+
+% ————————————————
+% ORDRE DE GRANDEUR 
+% ————————————————
+\renewcommand{\O}[1]{\mathcal{O}(#1)}
 
 % ————————————————
 % PROBABILITÉ 

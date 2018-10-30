@@ -41,6 +41,14 @@
 \usepackage{wrapfig}
 \usepackage{longtable}
 \usepackage[section]{placeins}
+
+\makeatletter
+\AtBeginDocument{%
+  \expandafter\renewcommand\expandafter\subsection\expandafter{%
+    \expandafter\@fb@secFB\subsection
+  }%
+}
+\makeatother
 % —————————————————————————————————————————————————
 % Permet de cross-out un morceau d'une equation dans textmode et mathmode sauf \cancelto{\infty}{} qui fonctionne juste en mathmode
 \usepackage[makeroom]{cancel}

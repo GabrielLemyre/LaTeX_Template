@@ -165,14 +165,17 @@
 \newcommand{\e}[1]{e^{#1}}
 \renewcommand{\exp}[1]{\ \mathrm{exp}\!\accolade{ #1 } }
 
+% Espérance (no Bracket)
+\long\def\EspNB{\mathds{E}}
+
 % Espérance 
 \long\def\Esp#1{\mathds{E}\!\left[ #1 \right]}
 \def\esp#1{\Esp{#1}}
 
-% Espérance Conditionnelle et indicée
+% Espérance Conditionnelle
 \long\def\espcond#1#2{\Esp{\cond{#1}{#2}}}
 
-% Espérance Conditionnelle et indicée
+% Espérance Indicée
 \long\def\EspInd#1#2{\mathds{E}_{#1}\!\left[ #2 \right]}
 
 % Espérance Conditionnelle et indicée

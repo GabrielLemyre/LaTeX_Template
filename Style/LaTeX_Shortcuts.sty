@@ -27,14 +27,14 @@
  	%\fancyhead[L]{{\fontsize{9}{12}\selectfont\sigleCoursVar \ - \TypeRemiseVar}}
  	
 	\renewcommand{\headrulewidth}{0.4pt}% Default \headrulewidth is 0.4pt
- 	\fancyhead[L]{{\fontsize{9}{12}\selectfont \scshape{Desjardins}}}
+ 	\fancyhead[L]{{\fontsize{9}{12}\selectfont \scshape{\TypeRemiseVar}}}
  	\fancyhead[C]{{\fontsize{9}{12}\selectfont--- \noms ---}}
  	\fancyhead[R]{{\fontsize{9}{12}\selectfont\dateremiseVar}}
  	
  	
 	\renewcommand{\footrulewidth}{0.4pt}% Default \footrulewidth is 0pt
  	\fancyfoot[R]{\fontsize{9}{12}\selectfont \thepage /\pageref{LastPage}}
- 	\fancyfoot[C]{\fontsize{9}{12}\selectfont Université de Montréal et Desjardins}
+ 	\fancyfoot[C]{\fontsize{9}{12}\selectfont \EstablishmentVar}
  	\fancyfoot[L]{\fontsize{9}{12}\selectfont \hyperlink{ToC}{$\Delta$}}
  	
  	
@@ -66,7 +66,9 @@
 	
 	\vspace{0.75\baselineskip} % Whitespace above the title
 	
-	{\bfseries\LARGE \sigleCoursVar \\ \scshape{\titreCoursVar} \par}
+	{\ifthenelse{\equal{\sigleCoursVar}{•}}{\bfseries\LARGE \scshape{\titreCoursVar} \par}{\bfseries\LARGE \sigleCoursVar \\ \scshape{\titreCoursVar} \par}}%
+	
+	
 	\rule{\widthof{\TypeRemiseVar}+\widthof{\TypeRemiseVar}}{1pt} \\
 	{\bfseries\scshape\Large \TypeRemiseVar \par}
 	

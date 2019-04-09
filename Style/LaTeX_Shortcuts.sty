@@ -33,10 +33,26 @@
  	
  	
 	\renewcommand{\footrulewidth}{0.4pt}% Default \footrulewidth is 0pt
- 	\fancyfoot[R]{\fontsize{9}{12}\selectfont \thepage /\pageref{LastPage}}
- 	\fancyfoot[C]{\fontsize{9}{12}\selectfont \EstablishmentVar}
  	\fancyfoot[L]{\fontsize{9}{12}\selectfont \hyperlink{ToC}{$\Delta$}}
+ 	\fancyfoot[C]{\fontsize{9}{12}\selectfont \EstablishmentVar}
+ 	\fancyfoot[R]{\fontsize{9}{12}\selectfont \thepage /\pageref{LastPage}}
  	
+ 	
+\fancypagestyle{plain}{ %This is to change the \chapter functionality so the page number is in the top right corner.
+	\pagestyle{fancy}
+	\fancyhf{}
+ 	
+	\renewcommand{\headrulewidth}{0.4pt}% Default \headrulewidth is 0.4pt
+ 	\fancyhead[L]{{\fontsize{9}{12}\selectfont \scshape{\TypeRemiseVar}}}
+ 	\fancyhead[C]{{\fontsize{9}{12}\selectfont--- \noms ---}}
+ 	\fancyhead[R]{{\fontsize{9}{12}\selectfont\dateremiseVar}}
+ 	
+ 	
+	\renewcommand{\footrulewidth}{0.4pt}% Default \footrulewidth is 0pt
+ 	\fancyfoot[L]{\fontsize{9}{12}\selectfont \hyperlink{ToC}{$\Delta$}}
+ 	\fancyfoot[C]{\fontsize{9}{12}\selectfont \EstablishmentVar}
+ 	\fancyfoot[R]{\fontsize{9}{12}\selectfont \thepage /\pageref{LastPage}}
+}
  	
  % —————————————————————————————————————————————————
  % Modifier style du numéro de page
@@ -69,7 +85,7 @@
 	{\ifthenelse{\equal{\sigleCoursVar}{•}}{\bfseries\LARGE \scshape{\titreCoursVar} \par}{\bfseries\LARGE \sigleCoursVar \\ \scshape{\titreCoursVar} \par}}%
 	
 	
-	\rule{\widthof{\TypeRemiseVar}+\widthof{\TypeRemiseVar}}{1pt} \\
+	\rule{\widthof{\titreCoursVar}+\widthof{\titreCoursVar}}{1pt} \\
 	{\bfseries\scshape\Large \TypeRemiseVar \par}
 	
 	\vspace{0.75\baselineskip} % Whitespace below the title
@@ -98,6 +114,11 @@
 % ------------------------------------------------------ SHORTCUTS -------------------------------------------------------------
 % \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 % —————————————————————————————————————————————————
+
+% ————————————————
+% KEYWORK ENVIRONMENT
+% ————————————————
+\providecommand{\keywords}[1]{\rule{\textwidth}{0.02cm} \\ \textbf{\textit{Key Terms --- }} #1 \\ \rule{\textwidth}{0.02cm}\vspace*{0.4cm}}
 
 % ————————————————
 % FONT FOR PACKAGES LOOK
@@ -144,12 +165,20 @@
 % ————————————————
 % LOGARITHME 
 % ————————————————
-\renewcommand{\log}[1]{\mathrm{log}\parent{#1}}
+\renewcommand{\log}[1]{\mathrm{log}\ #1}
 
 % ————————————————
 % ORDRE DE GRANDEUR 
 % ————————————————
 \renewcommand{\O}[1]{\mathcal{O}(#1)}
+
+% ————————————————
+% DOT PRODUCT 
+% ————————————————
+\makeatletter
+\newcommand*\dotp{\mathpalette\dotp@{.5}}
+\newcommand*\dotp@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
 
 % ————————————————
 % PROBABILITÉ 
@@ -246,7 +275,7 @@
 \def\CalcPt#1#2{\left. #1 \right\vert_{#2}} % EVALUATION
 
 % Derives partielle
-\def\partder#1#2{\frac{\partial #2}{\partial #1} } % DERIVE PARTIELLE ORDRE 1 
+\def\partder#1#2{\frac{\partial }{\partial #1}#2 } % DERIVE PARTIELLE ORDRE 1 
 \def\partderbar#1#2#3{\CalcPt{\frac{\partial}{\partial #1} #2}{#3}} % DERIVE PARTIELLE ORDRE 1 EN UN POINT
 \def\tpartder#1#2#3{\frac{\partial^{\left(#1\right)}}{\partial #2^{\left(#1\right)}} #3} % DERIVE PARTIELLE ORDRE T
 \def\tpartderbar#1#2#3#4{\CalcPt{\frac{\partial^{\left(#1\right)}}{\partial #2^{\left(#1\right)}} #3}{#4}} % DERIVE PARTIELLE ORDRE T EN UN POINT
@@ -267,6 +296,7 @@
 \newcommand{\vecc}[1]{\boldsymbol{\mathrm{#1}}}
 \newcommand{\vecl}[1]{\vec{#1}}
 
+% APPARENCE MATRICE
 \newcommand{\matrice}[1]{\begin{bmatrix} #1 \end{bmatrix}}
 \newcommand{\vmatrice}[1]{\begin{vmatrix} #1 \end{vmatrix}}
 
@@ -303,6 +333,13 @@
 \def\densNormale#1#2#3{
 	\frac{1}{\sqrt{2\pi #3}}\exp{ \frac{-1}{2 #3} \parent{#1 - #2}^2 }
 }
+
+% SCORE FUNCTION
+\def\Score#1#2{\mathcal{S}\parent{\cond{#1}{#2}}}
+\def\ScoreT#1#2{\mathcal{S}^T\parent{\cond{#1}{#2}}} % Écriture transposée
+
+% FISHER INFORMATION MATRIXA
+\def\FisherIM#1#2{\mathcal{F}_{#1}\parent{#2}}
 
 % —————————————————————————————————————————————————
 % //////////////////////////////////////////////////////////////////////////////////////////////
@@ -421,3 +458,7 @@
 \def\cttc#1{\hat{c}\!_{\cond{t+1}{#1}}\ \!\!}
 
 \def\sig#1{\sigma_{#1}}
+
+% Probabilités de transition de la chaine de Markov
+\def\pdtH#1{\upgamma_{#1}} % Homogène
+\def\pdtNH#1#2{\upgamma_{#1}\parent{#2}} % Non-Homogène

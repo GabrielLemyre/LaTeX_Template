@@ -1,0 +1,54 @@
+\documentclass[12pt,letterpaper]{book}
+%\long\def\path{/Users/TheMatrix/Documents/GitHub/LaTeX_Template/Style} % Path to the external style files
+\long\def\path{/Users/gabriellemyre/Documents/GitHub/LaTeX_Template/Style} % Path to the external style files
+\usepackage{\path/LaTeX_Preambule} % Style file
+% —————————————————————————————————————————————————
+\def\nbequipiers{1} % NUMBER OF TEAMATES FROM {1,...,4}
+\LANGUAGE{francaisRapport} % {francais, english} for the front page
+\INSTITUTION{Université de Montréal}
+\DEPARTMENT{Mathématiques et Statistiques}
+\classSYMBOL{•}
+\classTITLE{Revue Littérature}
+\TEACHER{Maciej}{Augustyniak}
+\workTITLE{•}
+\DATE{5 avril 2019}
+% TEAMATES
+\ONE{Gabriel}{Lemyre}
+\TWO{}{}
+\THREE{}{}
+\FOUR{}{}
+% —————————————————————————————————————————————————
+\usepackage{\path/LaTeX_Shortcuts} % Inputs the front page, top banner format and other userdefined macros
+\bibliography{../Research_Bibliographie} 
+
+\begin{document}
+\TitlePAGE % Inputs formatted front page
+
+% Inclusion table des matières
+\pagenumbering{gobble}
+\vspace*{-5em}
+\renewcommand{\contentsname}{Table des matières}%
+\hypertarget{ToC}{\tableofcontents}
+\addtocontents{toc}{~\hfill\textbf{Page}\par}
+\clearpage
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+% —————————————————————————————————————————————————
+% //////////////////////////////////////////////////////////////////////////////////////////////
+% REPORT STARTS HERE ——————————————————————————————————————
+% \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+% —————————————————————————————————————————————————
+
+\chapter{•}
+\section{•}
+
+	\subsection{Interesting topics}
+
+	\subsection{Difficulties}
+
+	\subsection{Conclusions}
+
+
+\printbibliography[title={Bibliographie}]
+\end{document}

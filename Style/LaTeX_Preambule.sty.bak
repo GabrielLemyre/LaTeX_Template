@@ -43,7 +43,7 @@
     
 % REDEFINING THE CITE COMMAND TO HAVE TH E YEAR IN BRACKETS
 \renewcommand{\cite}[2][]{
-   \!\!\!\citeauthor{#2} [\citeyear[#1]{#2}]\!\!\!
+   \citeauthor{#2} [\citeyear[#1]{#2}]
 }
 % —————————————————————————————————————————————————
 %Tableaux et figures

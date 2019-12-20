@@ -116,6 +116,17 @@
 % —————————————————————————————————————————————————
 
 % ————————————————
+% Environnement pour laisser des notes de rédaction
+% ————————————————
+\newenvironment{NoteRedac}[1]% environment name
+{% begin code
+\begin{tcolorbox}
+  \textbf{#1 :}\begin{itshape}%
+}%
+{\end{itshape}
+\end{tcolorbox}}% end code 
+
+% ————————————————
 % KEYWORK ENVIRONMENT
 % ————————————————
 \providecommand{\keywords}[1]{\rule{\textwidth}{0.02cm} \\ \textbf{\textit{Key Terms --- }} #1 \\ \rule{\textwidth}{0.02cm}\vspace*{0.4cm}}

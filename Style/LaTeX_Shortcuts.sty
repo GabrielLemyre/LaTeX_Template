@@ -109,11 +109,43 @@
 }
 
 
+
 % —————————————————————————————————————————————————
-% //////////////////////////////////////////////////////////////////////////////////////////////
-% ------------------------------------------------------ SHORTCUTS -------------------------------------------------------------
-% \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+% \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+% ------------------------------------------------------ IMPORT PACKAGES -------------------------------------------------------------
+% ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 % —————————————————————————————————————————————————
+
+% Packages
+\usepackage{dsfont} % Nécessaire pour les symboles d'ensembles mathématiques
+\usepackage{upgreek} % Nécessaire pour l'utilisation de upgreek dans les 
+                     	% probabilités de transition des chaînes de Markov
+
+% Permet entre autres l'utilisation de \DeclarePairedDelimiters                     	
+\usepackage{mathtools}
+
+% Permet de numéroté facilement les listes avec des lettres
+\usepackage[shortlabels]{enumitem}
+
+% Permet d'ajouter automatiquement un espace après une macro s'il n'y a pas de 
+% 	signe de ponctuaison et de ne pas en ajouter si un signe est présent.
+\usepackage{xspace} 
+
+% Permet l'ajout de boite autour du texte
+\usepackage{tcolorbox}
+
+% —————————————————————————————————————————————————
+% \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+% ------------------------------------------------------ NEW ENVIRONMENTS -------------------------------------------------------------
+% ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+% —————————————————————————————————————————————————
+
+
+
+% ————————————————
+% KEYWORK ENVIRONMENT
+% ————————————————
+\providecommand{\keywords}[1]{\rule{\textwidth}{0.02cm} \\ \textbf{\textit{Key Terms --- }} #1 \\ \rule{\textwidth}{0.02cm}\vspace*{0.4cm}}
 
 % ————————————————
 % Environnement pour laisser des notes de rédaction
@@ -126,10 +158,41 @@
 {\end{itshape}
 \end{tcolorbox}}% end code 
 
+
+
+% —————————————————————————————————————————————————
+% \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+% ------------------------------------------------------ SHORTCUTS -------------------------------------------------------------
+% ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+% —————————————————————————————————————————————————
+
+
+
+% —————————————————————————————————————————————————
+% STRINGS
+% —————————————————————————————————————————————————
+
+\def\MMC{modèle de Markov à variables latentes\xspace}
+\def\MMCs{modèles de Markov à variables latentes\xspace}
+
+\def\edh{équation aux Différences Homogènes }
+\def\edhs{équations aux Différences Homogènes }
+
+
+
+% —————————————————————————————————————————————————
+% TEXT FORMATING
+% —————————————————————————————————————————————————
+
 % ————————————————
-% KEYWORK ENVIRONMENT
+% PAGE REFERENCING FORMAT
 % ————————————————
-\providecommand{\keywords}[1]{\rule{\textwidth}{0.02cm} \\ \textbf{\textit{Key Terms --- }} #1 \\ \rule{\textwidth}{0.02cm}\vspace*{0.4cm}}
+\def\MPN#1{\!$^{(p.#1)}$}
+
+% ————————————————
+% FONT FOR R FUNCTION
+% ————————————————
+\newcommand{\Rfont}[1]{\texttt{#1}} 
 
 % ————————————————
 % FONT FOR PACKAGES LOOK
@@ -148,10 +211,42 @@
   \endgroup
 }
 
+
+
+% —————————————————————————————————————————————————
+% SIMPLE SYMBOLS
+% —————————————————————————————————————————————————
+
 % ————————————————
 % CHECKMARK
 % ————————————————
 \def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
+
+% ————————————————
+% Réels
+% ————————————————
+\def\R{\mathds{R}}
+
+% ————————————————
+% Naturels
+% ————————————————
+\def\N{\mathds{N}}
+
+% ————————————————
+% complexe
+% ————————————————
+\def\C{\mathds{C}}
+
+% ————————————————
+% Rationnels
+% ————————————————
+\def\Q{\mathds{Q}}
+
+
+
+% —————————————————————————————————————————————————
+% MATHEMATICAL ENCLOSURES
+% —————————————————————————————————————————————————
 
 % ————————————————
 % PARANTHÈSES
@@ -173,6 +268,12 @@
 % ————————————————
 \def\cond#1#2{\left. #1\ \vphantom{#2} \right\vert #2}
 
+
+
+% —————————————————————————————————————————————————
+% MATHEMATICAL FUNCTIONS
+% —————————————————————————————————————————————————
+
 % ————————————————
 % LOGARITHME 
 % ————————————————
@@ -181,7 +282,155 @@
 % ————————————————
 % ORDRE DE GRANDEUR 
 % ————————————————
-\renewcommand{\O}[1]{\mathcal{O}(#1)}
+\newcommand{\Order}[1]{\mathrm{O}(#1)}
+
+% ————————————————
+% PLUS GRAND COMMUN DIVISEUR 
+% ————————————————
+\def\pgcd#1{\mathrm{pgcd}\parent{#1}}
+
+% ————————————————
+% OPÉRATEUR e 
+% ————————————————
+\newcommand{\e}[1]{e^{#1}} % symbolique
+\renewcommand{\exp}[1]{\ \mathrm{exp}\!\accolade{ #1 } } % fonctionnel
+
+% ————————————————
+% POUR TOUT #1 DANS #2 
+% ————————————————
+\def\pourtoutd#1#2{\forall{\, #1 \in{#2} } }
+
+% ————————————————
+% SOMME avec limite inf et sup et le contenu comme dernier argument
+% ————————————————
+\def\somme#1#2#3{\sum\limits_{#1}^{#2} {#3}}
+
+% ————————————————
+% PRODUIT avec limite inf et sup et le contenu comme dernier argument
+% ————————————————
+\def\produit#1#2#3{\prod\limits_{#1}^{#2} {#3}}
+
+% ————————————————
+% MOMENT GENERATING FUNCTION
+% ————————————————
+\def\fgm#1#2{\mathcal{M}_{#1}\!\left(#2\right)}
+
+% ————————————————
+% SCORE FUNCTION
+% ————————————————
+\def\Score#1#2{\mathcal{S}\parent{\cond{#1}{#2}}}
+\def\ScoreT#1#2{\mathcal{S}^T\parent{\cond{#1}{#2}}} % Écriture transposée
+
+% ————————————————
+% FISHER INFORMATION MATRIX
+% ————————————————
+\def\FisherIM#1#2{\mathcal{F}_{#1}\parent{#2}}
+
+% ————————————————
+% Calcul en un point
+% ————————————————
+\def\CalcPt#1#2{\left. #1 \right\vert_{#2}} % EVALUATION
+
+% ————————————————
+% Derives partielle
+% ————————————————
+\def\partder#1#2{\frac{\partial }{\partial #1}#2 } % DERIVE PARTIELLE ORDRE 1 
+\def\partderbar#1#2#3{\CalcPt{\frac{\partial}{\partial #1} #2}{#3}} % DERIVE PARTIELLE ORDRE 1 EN UN POINT
+\def\tpartder#1#2#3{\frac{\partial^{\left(#1\right)}}{\partial #2^{\left(#1\right)}} #3} % DERIVE PARTIELLE ORDRE T
+\def\tpartderbar#1#2#3#4{\CalcPt{\frac{\partial^{\left(#1\right)}}{\partial #2^{\left(#1\right)}} #3}{#4}} % DERIVE PARTIELLE ORDRE T EN UN POINT
+
+% ————————————————
+% VALEURS ABSOLUES ET NORMES (mathtools)
+% ————————————————
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+%\makeatletter
+%\let\oldabs\abs
+%\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%%
+%\let\oldnorm\norm
+%\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+%\makeatother
+
+% ————————————————
+% EXPOSANT -1
+% ————————————————
+\def\expMoinsUn#1{{#1}^{-1}}
+
+% ————————————————
+% Function syntax
+% ————————————————
+\newcommand{\fun}[3]{#1\!\parent{#2;#3}}
+
+% ————————————————
+% MSE Function format
+% ————————————————
+\def\MSE#1{\mathrm{MSE}\!\left(#1\right)}
+
+% ————————————————
+% OVERLINE SUR LETTRE MAJUSCULE (POUR LE CONJUGUÉ)
+% ————————————————
+\newcommand*{\ovA}[1]{%
+  \overline{\mbox{#1}\raisebox{4.5mm}{}}
+}
+
+% ————————————————
+% PRÉVISION
+% ————————————————
+\def\prev#1#2#3{{#1}_{#2}^{#3}}
+
+
+
+% —————————————————————————————————————————————————
+% TRIGONOMETRY
+% —————————————————————————————————————————————————
+
+% Nouveau cos
+\long\def\coss#1{\cos\!\parent{#1}}
+
+% Nouveau sin
+\long\def\sins#1{\sin\!\parent{#1}}
+
+% Nouveau tan
+\long\def\tans#1{\tan\!\parent{#1}}
+
+% Nouveau arctan
+\long\def\arctans#1{\arctan\!\parent{#1}}
+
+
+
+% —————————————————————————————————————————————————
+% ALGEBRA
+% —————————————————————————————————————————————————
+
+% ————————————————
+% MATRICE AUX FINS D'EXEMPLES
+% ————————————————
+\def\matEx{\mat{T}}
+
+% ————————————————
+% LETTRE DROITE POUR SIGNIFIÉ UNE MATRICE 
+% ————————————————
+\def\mat#1{\mathrm{\textbf{#1}}}
+
+% ————————————————
+% APPARENCE VECTEUR
+% ————————————————
+\newcommand{\vecc}[1]{\boldsymbol{\mathrm{#1}}}
+\newcommand{\vecl}[1]{\vec{#1}}
+
+% ————————————————
+% Vecteur de UN
+% ————————————————
+\def\vecun#1{\vecc{1}_{#1}}
+
+% ————————————————
+% MATRICE IDENTITE
+% ————————————————
+\def\Idn#1{\vecc{\mathrm{I}}_{#1}}
 
 % ————————————————
 % DOT PRODUCT 
@@ -192,25 +441,61 @@
 \makeatother
 
 % ————————————————
+% TRANSPOSÉE 
+% ————————————————
+\newcommand{\T}[1]{#1\prime}
+
+% ————————————————
+% TRACE MATRICE
+% ————————————————
+\def\tr#1{\mathrm{tr}\!\left(#1\right)}
+
+% ————————————————
+% fonction MATRICE
+% ————————————————
+\newcommand{\matrice}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\newcommand{\vmatrice}[1]{\begin{vmatrix} #1 \end{vmatrix}}
+\newcommand{\matriceNB}[1]{\begin{matrix} #1 \end{matrix}}
+
+
+
+% —————————————————————————————————————————————————
+% PROBABILITY
+% —————————————————————————————————————————————————
+
+% ————————————————
+% NORMALE
+% ————————————————
+\def\Normale#1#2#3#4{
+\def\temp{#4}\ifx\temp\empty % Testing for the 2nd argument's value
+  		\mathcal{N}_{#1}\parent{#2,#3}
+	\else
+		\mathcal{N}_{#1}\parent{#2_{#4},#3_{#4}}
+	\fi
+}
+
+\def\densNormale#1#2#3{
+	\frac{1}{\sqrt{2\pi #3}}\exp{ \frac{-1}{2 #3} \parent{#1 - #2}^2 }
+}
+
+% ————————————————
 % PROBABILITÉ 
 % ————————————————
-\def\prob#1{p\parent{#1}}
+\def\prob#1{\mathds{P}\!\crochet{#1}}
+
+\def\Pr#1{\mathds{P}\!\left[#1\right]} % DEPRECATED
 
 % ————————————————
 % PROBABILITÉ CONDITIONNELLE
 % ————————————————
-\def\probcond#1#2{p\parent{\cond{#1}{#2}}}
+\def\probcond#1#2{\mathds{P}\!\crochet{\cond{#1}{#2}}}
 
-%operateur e
-\newcommand{\e}[1]{e^{#1}}
-\renewcommand{\exp}[1]{\ \mathrm{exp}\!\accolade{ #1 } }
 
-% Espérance (no Bracket)
-\long\def\EspNB{\mathds{E}}
-
-% Espérance 
-\long\def\Esp#1{\mathds{E}\!\left[ #1 \right]}
-\def\esp#1{\Esp{#1}}
+% ————————————————
+% ESPÉRANCE
+% ————————————————
+\long\def\EspNB{\mathds{E}} % No Brackets
+\long\def\Esp#1{\mathds{E}\!\crochet{#1}} % Brackets
 
 % Espérance Conditionnelle
 \long\def\espcond#1#2{\Esp{\cond{#1}{#2}}}
@@ -222,20 +507,21 @@
 \long\def\EspCondInd#1#2#3{\mathds{E}_{#1}\!\left[ \left. \vphantom{#3}#2 \right\vert #3 \right]}
 
 
-% Variance
-\long\def\var#1{\mathds{V}\!ar\!\left[ #1 \right]}
+% ————————————————
+% VARIANCE
+% ————————————————
+
+% Variance Simple
+\long\def\var#1{\mathds{V}\!ar\!\crochet{#1}}
 
 % Variance Conditionnelle
-\long\def\varcond#1#2{\mathds{V}\!ar\!\left[ \cond{#1}{#2} \right]}
+\long\def\varcond#1#2{\mathds{V}\!ar\!\crochet{\cond{#1}{#2}}}
 
 % Covariance
-\long\def\cov#1#2{\hspace{0.08cm}\mathds{C}\!ov\!\left[ #1 ,#2\right]}
+\long\def\cov#1#2{\hspace{0.08cm}\mathds{C}\!ov\!\crochet{#1 ,#2}}
 
 % Corrélation
-\long\def\cor#1#2{\hspace{0.08cm}corr\!\left(#1,#2\right)}
-
-% POUR TOUT
-\def\pourtoutd#1#2{\forall{\, #1 \in{#2} } }
+\long\def\correlation#1#2{\hspace{0.08cm}corr\!\parent{#1,#2}}
 
 % AUTOCOVARIANCE FUNCTION
 \def\avf#1#2{\hspace{0.08cm}\gamma_{#1}\!\left(#2\right)}
@@ -249,112 +535,79 @@
 % AUTOCORRELATION FUNCTION de x
 \def\acfx#1{\hspace{0.08cm}\rho_{x}\!\left(#1\right)}
 
-% SOMME avec limite inf et sup et le contenu comme dernier argument
-\def\somme#1#2#3{\sum\limits_{#1}^{#2} {#3}}
-
-% PRODUIT avec limite inf et sup et le contenu comme dernier argument
-\def\produit#1#2#3{\prod\limits_{#1}^{#2} {#3}}
-
-% EQUATIONS AUX DIFFéRENCES HOMOGÈNES
-\def\edh{équation aux Différences Homogènes }
-
-% EQUATIONS AUX DIFFéRENCES HOMOGÈNES
-\def\edhs{équations aux Différences Homogènes }
-
-% FONT FOR R FUNCTION
-\newcommand{\Rfont}[1]{\texttt{#1}} 
-
-% Nouveau cos
-\long\def\coss#1{\cos\!\left( #1 \right)}
-
-% Nouveau sin
-\long\def\sins#1{\sin\!\left( #1 \right)}
-
-% Nouveau tan
-\long\def\tans#1{\tan\!\left( #1 \right)}
-
-% Nouveau arctan
-\long\def\arctans#1{\arctan\!\left( #1 \right)}
-
-% PAGE REFERENCING FORMAT
-\def\MPN#1{\!$^{(p.#1)}$}
-
-% PROBABILITY
-\def\Pr#1{\mathds{P}\!\left[#1\right]}
-
-% MOMENT GENERATING FUNCITON
-\def\fgm#1#2{\mathcal{M}_{#1}\!\left(#2\right)}
-
-% Calcul en un point
-\def\CalcPt#1#2{\left. #1 \right\vert_{#2}} % EVALUATION
-
-% Derives partielle
-\def\partder#1#2{\frac{\partial }{\partial #1}#2 } % DERIVE PARTIELLE ORDRE 1 
-\def\partderbar#1#2#3{\CalcPt{\frac{\partial}{\partial #1} #2}{#3}} % DERIVE PARTIELLE ORDRE 1 EN UN POINT
-\def\tpartder#1#2#3{\frac{\partial^{\left(#1\right)}}{\partial #2^{\left(#1\right)}} #3} % DERIVE PARTIELLE ORDRE T
-\def\tpartderbar#1#2#3#4{\CalcPt{\frac{\partial^{\left(#1\right)}}{\partial #2^{\left(#1\right)}} #3}{#4}} % DERIVE PARTIELLE ORDRE T EN UN POINT
-
-%Réels
-\def\R{\mathds{R}}
-%Naturels
-\def\N{\mathds{N}}
-%complexe
-\def\C{\mathds{C}}
-%Rationnels
-\def\Q{\mathds{Q}}
-
-\def\expMoinsUn#1{{#1}^{-1}}
-\def\T#1{#1'}
-
-% APPARENCE VECTEUR
-\newcommand{\vecc}[1]{\boldsymbol{\mathrm{#1}}}
-\newcommand{\vecl}[1]{\vec{#1}}
-
-% APPARENCE MATRICE
-\newcommand{\matrice}[1]{\begin{bmatrix} #1 \end{bmatrix}}
-\newcommand{\vmatrice}[1]{\begin{vmatrix} #1 \end{vmatrix}}
-\newcommand{\matriceNB}[1]{\begin{matrix} #1 \end{matrix}}
-
-% MATRICE IDENTITE
-\def\Idn#1{\vecc{\mathrm{I}}_{#1}}
-
-% Vecteur de UN
-\def\vecun#1{\vecc{1}_{#1}}
 
 
-% Function syntax
-\newcommand{\fun}[3]{#1\!\parent{#2;#3}}
-
-% Matrix Trace
-\def\tr#1{\mathrm{tr}\!\left(#1\right)}
-
-% MSE Function format
-\def\MSE#1{\mathrm{MSE}\!\left(#1\right)}
 % —————————————————————————————————————————————————
 % //////////////////////////////////////////////////////////////////////////////////////////////
-% DISTRIBUTIONS PROBABILITÉS ---------------------------------------------------------------------------------------------
+% STT6705 - MODELES DE MARKOV A VARIABLE LATENTE -----------------------------------------------------------
 % \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 % —————————————————————————————————————————————————
 
-% NORMALE
-\def\Normale#1#2#3#4{
-\def\temp{#4}\ifx\temp\empty % Testing for the 2nd argument's value
-  		\mathcal{N}_{#1}\parent{#2,#3}
-	\else
-		\mathcal{N}_{#1}\parent{#2_{#4},#3_{#4}}
-	\fi
-}
+% ————————————————
+% Espace d'états
+% ————————————————
+\def\espdetat{\mathcal{C}\!}
 
-\def\densNormale#1#2#3{
-	\frac{1}{\sqrt{2\pi #3}}\exp{ \frac{-1}{2 #3} \parent{#1 - #2}^2 }
-}
+% ————————————————
+% Sigma indicé
+% ————————————————
+\def\sig#1{\sigma_{#1}}
 
-% SCORE FUNCTION
-\def\Score#1#2{\mathcal{S}\parent{\cond{#1}{#2}}}
-\def\ScoreT#1#2{\mathcal{S}^T\parent{\cond{#1}{#2}}} % Écriture transposée
+% —————————————————————————————————————————————————
+% Probabilités de transition de la chaine de Markov
+% —————————————————————————————————————————————————
+\def\pdtH#1{\upgamma_{#1}} % Homogène
+\def\pdtNH#1#2{\upgamma_{#1}\parent{#2}} % Non-Homogène
 
-% FISHER INFORMATION MATRIXA
-\def\FisherIM#1#2{\mathcal{F}_{#1}\parent{#2}}
+% —————————————————————————————————————————————————
+% Probabilités de transition en m pas de la chaine de Markov
+% —————————————————————————————————————————————————
+\def\pdtHm#1#2{\upgamma_{#1}^{\parent{#2}}} % Homogène
+\def\pdtNHm#1#2#3{\upgamma_{#1}^{\parent{#3}}\parent{#2}} % Non-Homogène
+
+% —————————————————————————————————————————————————
+% Matrice de transition de la chaine de Markov
+% —————————————————————————————————————————————————
+\def\matTH{\mathbf{\Gamma}} % Homogène
+\def\matTNH#1{\matTH_{\!#1}} % Non-Homogène
+
+% —————————————————————————————————————————————————
+% Matrice de Passage pour diagonalisation
+% —————————————————————————————————————————————————
+\def\P{\mathrm{P}} %
+
+% —————————————————————————————————————————————————
+% Matrice de transition en m pas de la chaine de Markov
+% —————————————————————————————————————————————————
+\def\matTHm#1{\matTH^{\parent{#1}}} % Non-Homogène
+\def\matTNHm#1#2{\matTNH{#1}^{\parent{#2}}} % Non-Homogène
+
+% —————————————————————————————————————————————————
+% Distribution marginale
+% —————————————————————————————————————————————————
+\def\distmarg#1{\vec{\mathfrak{u}}\parent{#1}}
+
+% —————————————————————————————————————————————————
+% Distribution marginale paramètre
+% —————————————————————————————————————————————————
+\def\distmargPara#1#2{\mathfrak{u}_{#2}\parent{#1}}
+
+% —————————————————————————————————————————————————
+% Distribution stationnaire de la chaîne
+% —————————————————————————————————————————————————
+\def\diststat{\vec{\mathbf{\pi}}}
+\def\dstat#1{\pi_{#1}}
+
+% ————————————————
+% Filtre d'Hamilton
+% ————————————————
+\def\Ptt#1{\mathrm{P}\!_{\cond{t}{#1}}\ \!\!}
+\def\Pttc#1{\mathrm{P}\!_{\cond{t+1}{#1}}\ \!\!}
+\def\ctt#1{\hat{c}\!_{\cond{t}{#1}}\ \!\!}
+\def\cttc#1{\hat{c}\!_{\cond{t+1}{#1}}\ \!\!}
+
+
+
 
 % —————————————————————————————————————————————————
 % //////////////////////////////////////////////////////////////////////////////////////////////
@@ -367,28 +620,29 @@
 \def\xtm{$X^{t}_{t+m}$}
 \def\sigw{\sigma_{\omega}^2}
 
-\newcommand*{\ovA}[1]{%
-  \overline{\mbox{#1}\raisebox{4.5mm}{}}
-}
-
 \def\Rconj{\ovA{$R$}}
 
 % Modele AR(p)
 \def\ar#1{$\mathrm{AR}\!\left(#1\right)$}
+
 % Modele MA(p)
 \def\ma#1{$\mathrm{MA}\!\left(#1\right)$}
+
 % Modele ARMA(p,q)
 \def\arma#1{$\mathrm{ARMA}\!\left(#1\right)$}
+
 % Modele ARCH(p)
 \def\arch#1{$\mathrm{ARCH}\!\left(#1\right)$}
+
 % Modele GARCH(p)
 \def\garch#1#2{$\mathrm{GARCH}\!\left(#1,#2\right)$}
+
 % Modele ARIMA(p,d,q)
 \def\arima#1{$\mathrm{ARIMA}\!\left(#1\right)$}
+
 % Operateur meilleure prevision linéaire
 \def\P#1#2{P_{\! #1}\!\left(X_{#2}\right)}
 
-\def\prev#1#2#3{{#1}_{#2}^{#3}}
 
 
 % —————————————————————————————————————————————————
@@ -458,22 +712,3 @@
 
 % DEVOIR 3
 \def\whpi{{\widehat{\pi}_i}}
-
-% —————————————————————————————————————————————————
-% //////////////////////////////////////////////////////////////////////////////////////////////
-% STT6705 - MODELES DE MARKOV A VARIABLE LATENTE -----------------------------------------------------------
-% \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-% —————————————————————————————————————————————————
-
-\def\vpi{\vecl{\pi}}
-
-\def\Ptt#1{\mathrm{P}\!_{\cond{t}{#1}}\ \!\!}
-\def\Pttc#1{\mathrm{P}\!_{\cond{t+1}{#1}}\ \!\!}
-\def\ctt#1{\hat{c}\!_{\cond{t}{#1}}\ \!\!}
-\def\cttc#1{\hat{c}\!_{\cond{t+1}{#1}}\ \!\!}
-
-\def\sig#1{\sigma_{#1}}
-
-% Probabilités de transition de la chaine de Markov
-\def\pdtH#1{\upgamma_{#1}} % Homogène
-\def\pdtNH#1#2{\upgamma_{#1}\parent{#2}} % Non-Homogène

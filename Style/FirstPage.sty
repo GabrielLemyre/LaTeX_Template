@@ -1,0 +1,109 @@
+% —————————————————————————————————————————————————
+% //////////////////////////////////////////////////////////////////////////////////////////////
+% ---------------------------------------- FORMAT FIRST PAGE AND PAGE TOP --------------------------------------------
+% \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+% —————————————————————————————————————————————————
+
+\newcommand{\CreateurNom}[2]{#1 {\scshape{#2}}\ }
+
+\newcommand{\CoUn}{\CreateurNom{\PrenomUnVar}{\NomUnVar}}
+\newcommand{\CoDeux}{\CreateurNom{\PrenomDeuxVar}{\NomDeuxVar}}
+\newcommand{\CoTrois}{\CreateurNom{\PrenomTroisVar}{\NomTroisVar}}
+\newcommand{\CoQuatre}{\CreateurNom{\PrenomQuatreVar}{\NomQuatreVar}}
+\def\nomsjump{\CoUn \\ \CoDeux \\ \CoTrois \\ \CoQuatre}
+
+\def\noms{
+\ifthenelse{\nbequipiers = 1}{\CoUn}{\!}
+\ifthenelse{\nbequipiers = 2}{\CoUn -- \CoDeux}{\!}
+\ifthenelse{\nbequipiers = 3}{\CoUn -- \CoDeux -- \CoTrois}{\!}
+\ifthenelse{\nbequipiers = 4}{\CoUn -- \CoDeux --- \\ --- \CoTrois -- \CoQuatre}{\!}
+}
+
+\newcommand{\NomProf}{\CreateurNom{\PrenomProfVar}{\NomFamilleProfVar}}
+% —————————————————————————————————————————————————
+% Changement du style de mise en page
+	\pagestyle{fancy}
+	\fancyhf{}
+ 	%\fancyhead[L]{{\fontsize{9}{12}\selectfont\sigleCoursVar \ - \TypeRemiseVar}}
+ 	
+	\renewcommand{\headrulewidth}{0.4pt}% Default \headrulewidth is 0.4pt
+ 	\fancyhead[L]{{\fontsize{9}{12}\selectfont \scshape{\TypeRemiseVar}}}
+ 	\fancyhead[C]{{\fontsize{9}{12}\selectfont--- \noms ---}}
+ 	\fancyhead[R]{{\fontsize{9}{12}\selectfont\dateremiseVar}}
+ 	
+ 	
+	\renewcommand{\footrulewidth}{0.4pt}% Default \footrulewidth is 0pt
+ 	\fancyfoot[L]{\fontsize{9}{12}\selectfont \hyperlink{ToC}{$\Delta$}}
+ 	\fancyfoot[C]{\fontsize{9}{12}\selectfont \EstablishmentVar}
+ 	\fancyfoot[R]{\fontsize{9}{12}\selectfont \thepage /\pageref{LastPage}}
+ 	
+ 	
+\fancypagestyle{plain}{ %This is to change the \chapter functionality so the page number is in the top right corner.
+	\pagestyle{fancy}
+	\fancyhf{}
+ 	
+	\renewcommand{\headrulewidth}{0.4pt}% Default \headrulewidth is 0.4pt
+ 	\fancyhead[L]{{\fontsize{9}{12}\selectfont \scshape{\TypeRemiseVar}}}
+ 	\fancyhead[C]{{\fontsize{9}{12}\selectfont--- \noms ---}}
+ 	\fancyhead[R]{{\fontsize{9}{12}\selectfont\dateremiseVar}}
+ 	
+ 	
+	\renewcommand{\footrulewidth}{0.4pt}% Default \footrulewidth is 0pt
+ 	\fancyfoot[L]{\fontsize{9}{12}\selectfont \hyperlink{ToC}{$\Delta$}}
+ 	\fancyfoot[C]{\fontsize{9}{12}\selectfont \EstablishmentVar}
+ 	\fancyfoot[R]{\fontsize{9}{12}\selectfont \thepage /\pageref{LastPage}}
+}
+ 	
+ % —————————————————————————————————————————————————
+ % Modifier style du numéro de page
+%\rfoot{\vspace*{-2em} \thepage /\pageref{LastPage}}
+%\lfoot{\hyperlink{ToC}{$\Delta$}}
+
+% —————————————————————————————————————————————————
+% —————————————————————————————————————————————————
+% TITLE PAGE FORMATING
+\newcommand{\TitlePAGE}{
+\begin{titlepage}
+	
+	\centering % Centre everything on the title page
+	
+	%\scshape % Use small caps for all text on the title page
+	
+	\vspace*{\baselineskip} % White space at the top of the page
+	%\includegraphics[width=0.15\textwidth]{example-image-1x1}\par\vspace{1cm}
+	{\huge \scshape{\EstablishmentVar} \par}
+	
+	{\Large \DepartmentVar \par}
+	
+	\vspace{2cm}
+	
+	\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} % Thick horizontal rule
+	\rule{\textwidth}{0.4pt} % Thin horizontal rule
+	
+	\vspace{0.75\baselineskip} % Whitespace above the title
+	
+	{\ifthenelse{\equal{\sigleCoursVar}{•}}{\bfseries\LARGE \scshape{\titreCoursVar} \par}{\bfseries\LARGE \sigleCoursVar \\ \scshape{\titreCoursVar} \par}}%
+	
+	
+	\rule{\widthof{\titreCoursVar}+\widthof{\titreCoursVar}}{1pt} \\
+	{\bfseries\scshape\Large \TypeRemiseVar \par}
+	
+	\vspace{0.75\baselineskip} % Whitespace below the title
+	
+	\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal rule
+	\rule{\textwidth}{1.6pt} % Thick horizontal rule
+	
+	\vspace{2cm}
+	{\Large \nomsjump \par}
+	\vfill
+	\HandedtoText \\
+	{\Large \NomProf \\}
+
+	\vfill
+
+% Bottom of the page
+	{\large \dateremiseVar \par}
+\end{titlepage}
+\clearpage
+
+}

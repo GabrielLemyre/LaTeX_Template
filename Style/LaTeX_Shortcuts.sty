@@ -116,6 +116,9 @@
 % ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 % —————————————————————————————————————————————————
 
+% Permet l'utilisation du nom des couleurs
+\usepackage[svgnames]{xcolor}
+
 % Packages
 \usepackage{dsfont} % Nécessaire pour les symboles d'ensembles mathématiques
 \usepackage{upgreek} % Nécessaire pour l'utilisation de upgreek dans les 
@@ -133,6 +136,10 @@
 
 % Permet l'ajout de boite autour du texte
 \usepackage{tcolorbox}
+
+% Permet d'importer du code et de le formater
+\usepackage{listingsutf8}
+\lstset{inputencoding=utf8/latin1}
 
 % —————————————————————————————————————————————————
 % \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -157,6 +164,19 @@
 }%
 {\end{itshape}
 \end{tcolorbox}}% end code 
+
+% ————————————————
+% Environnement pour code R et formatage
+% ————————————————
+\lstset{language=R,
+    basicstyle=\small\ttfamily,
+    stringstyle=\color{DarkGreen},
+    otherkeywords={0,1,2,3,4,5,6,7,8,9},
+    morekeywords={TRUE,FALSE},
+    deletekeywords={data,frame,length,as,character},
+    keywordstyle=\color{blue},
+    commentstyle=\color{DarkGreen}
+}
 
 
 
@@ -457,6 +477,11 @@
 \newcommand{\vmatrice}[1]{\begin{vmatrix} #1 \end{vmatrix}}
 \newcommand{\matriceNB}[1]{\begin{matrix} #1 \end{matrix}}
 
+% ————————————————
+% Spectre matrice (Ensemble valeurs propres)
+% ————————————————
+\def\spectre#1{\lambda\parent{#1}}
+
 
 
 % —————————————————————————————————————————————————
@@ -574,7 +599,7 @@
 % —————————————————————————————————————————————————
 % Matrice de Passage pour diagonalisation
 % —————————————————————————————————————————————————
-\def\P{\mathrm{P}} %
+\def\P{\mat{P}} %
 
 % —————————————————————————————————————————————————
 % Matrice de transition en m pas de la chaine de Markov
@@ -640,8 +665,8 @@
 % Modele ARIMA(p,d,q)
 \def\arima#1{$\mathrm{ARIMA}\!\left(#1\right)$}
 
-% Operateur meilleure prevision linéaire
-\def\P#1#2{P_{\! #1}\!\left(X_{#2}\right)}
+%% Operateur meilleure prevision linéaire
+%\def\P#1#2{P_{\! #1}\!\left(X_{#2}\right)}
 
 
 

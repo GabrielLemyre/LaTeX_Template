@@ -17,8 +17,9 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{amsbsy}
+
 \usepackage{color}
-\usepackage[table,xcdraw,dvipsnames]{xcolor}
+\usepackage[table,xcdraw,dvipsnames,svgnames]{xcolor}
 \usepackage{dsfont}
 \usepackage{rotating}
 \usepackage{pdftexcmds}
@@ -389,20 +390,6 @@ fonttitle=\sffamily\bfseries,
 %\singlespacing
 %\onehalfspacing
 %\setstretch{1.2}
-
-% VALEURS ABSOLUES ET NORMES (mathtools)
-\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
-\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
-% Swap the definition of \abs* and \norm*, so that \abs
-% and \norm resizes the size of the brackets, and the 
-% starred version does not.
-\makeatletter
-\let\oldabs\abs
-\def\abs{\@ifstar{\oldabs}{\oldabs*}}
-%
-\let\oldnorm\norm
-\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
-\makeatother
 
 % NEW FORMAT FOR COLUMNS
 \newcolumntype{C}{ >{\centering\arraybackslash} m{2cm} }

@@ -116,9 +116,6 @@
 % ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 % —————————————————————————————————————————————————
 
-% Permet l'utilisation du nom des couleurs
-\usepackage[svgnames]{xcolor}
-
 % Packages
 \usepackage{dsfont} % Nécessaire pour les symboles d'ensembles mathématiques
 \usepackage{upgreek} % Nécessaire pour l'utilisation de upgreek dans les 
@@ -172,7 +169,7 @@
     basicstyle=\small\ttfamily,
     stringstyle=\color{DarkGreen},
     otherkeywords={0,1,2,3,4,5,6,7,8,9},
-    morekeywords={TRUE,FALSE},
+    morekeywords={TRUE,FALSE, NULL},
     deletekeywords={data,frame,length,as,character},
     keywordstyle=\color{blue},
     commentstyle=\color{DarkGreen}
@@ -367,13 +364,13 @@
 % Swap the definition of \abs* and \norm*, so that \abs
 % and \norm resizes the size of the brackets, and the 
 % starred version does not.
-%\makeatletter
-%\let\oldabs\abs
-%\def\abs{\@ifstar{\oldabs}{\oldabs*}}
-%%
-%\let\oldnorm\norm
-%\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
-%\makeatother
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
 
 % ————————————————
 % EXPOSANT -1

@@ -1,7 +1,10 @@
 \documentclass[12pt,letterpaper]{book}
-%\long\def\path{/Users/TheMatrix/Documents/GitHub/LaTeX_Template/Style} % Path to the external style files
-\long\def\path{/Users/gabriellemyre/Documents/GitHub/LaTeX_Template/Style} % Path to the external style files
-\usepackage{\path/LaTeX_Preambule} % Style file
+%\long\def\path{/Users/TheMatrix/Documents/GitHub} % Path to the external style files
+\long\def\path{/Users/gabriellemyre/Documents/GitHub} % Path to the external style files
+% —————————————————————————————————————————————————
+\usepackage{\path/LaTeX_Template/Style/LaTeX_Preambule} % Style file
+\usepackage{\path/LaTeX_Template/Style/LaTeX_Shortcuts} % Inputs the front page, top banner format and other userdefined macros
+\bibliography{\path/Revue_Litterature/Research_Bibliographie} 
 % —————————————————————————————————————————————————
 \def\nbequipiers{1} % NUMBER OF TEAMATES FROM {1,...,4}
 \LANGUAGE{francaisRapport} % {francais, english} for the front page
@@ -18,8 +21,6 @@
 \THREE{}{}
 \FOUR{}{}
 % —————————————————————————————————————————————————
-\usepackage{\path/LaTeX_Shortcuts} % Inputs the front page, top banner format and other userdefined macros
-\bibliography{../../Research_Bibliographie} 
 
 \begin{document}
 \TitlePAGE % Inputs formatted front page

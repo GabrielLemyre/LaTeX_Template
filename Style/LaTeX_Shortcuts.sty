@@ -1,114 +1,4 @@
-% —————————————————————————————————————————————————
-% //////////////////////////////////////////////////////////////////////////////////////////////
-% ---------------------------------------- FORMAT FIRST PAGE AND PAGE TOP --------------------------------------------
-% \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-% —————————————————————————————————————————————————
-
-\newcommand{\CreateurNom}[2]{#1 {\scshape{#2}}\ }
-
-\newcommand{\CoUn}{\CreateurNom{\PrenomUnVar}{\NomUnVar}}
-\newcommand{\CoDeux}{\CreateurNom{\PrenomDeuxVar}{\NomDeuxVar}}
-\newcommand{\CoTrois}{\CreateurNom{\PrenomTroisVar}{\NomTroisVar}}
-\newcommand{\CoQuatre}{\CreateurNom{\PrenomQuatreVar}{\NomQuatreVar}}
-\def\nomsjump{\CoUn \\ \CoDeux \\ \CoTrois \\ \CoQuatre}
-
-\def\noms{
-\ifthenelse{\nbequipiers = 1}{\CoUn}{\!}
-\ifthenelse{\nbequipiers = 2}{\CoUn -- \CoDeux}{\!}
-\ifthenelse{\nbequipiers = 3}{\CoUn -- \CoDeux -- \CoTrois}{\!}
-\ifthenelse{\nbequipiers = 4}{\CoUn -- \CoDeux --- \\ --- \CoTrois -- \CoQuatre}{\!}
-}
-
-\newcommand{\NomProf}{\CreateurNom{\PrenomProfVar}{\NomFamilleProfVar}}
-% —————————————————————————————————————————————————
-% Changement du style de mise en page
-	\pagestyle{fancy}
-	\fancyhf{}
- 	%\fancyhead[L]{{\fontsize{9}{12}\selectfont\sigleCoursVar \ - \TypeRemiseVar}}
- 	
-	\renewcommand{\headrulewidth}{0.4pt}% Default \headrulewidth is 0.4pt
- 	\fancyhead[L]{{\fontsize{9}{12}\selectfont \scshape{\TypeRemiseVar}}}
- 	\fancyhead[C]{{\fontsize{9}{12}\selectfont--- \noms ---}}
- 	\fancyhead[R]{{\fontsize{9}{12}\selectfont\dateremiseVar}}
- 	
- 	
-	\renewcommand{\footrulewidth}{0.4pt}% Default \footrulewidth is 0pt
- 	\fancyfoot[L]{\fontsize{9}{12}\selectfont \hyperlink{ToC}{$\Delta$}}
- 	\fancyfoot[C]{\fontsize{9}{12}\selectfont \EstablishmentVar}
- 	\fancyfoot[R]{\fontsize{9}{12}\selectfont \thepage /\pageref{LastPage}}
- 	
- 	
-\fancypagestyle{plain}{ %This is to change the \chapter functionality so the page number is in the top right corner.
-	\pagestyle{fancy}
-	\fancyhf{}
- 	
-	\renewcommand{\headrulewidth}{0.4pt}% Default \headrulewidth is 0.4pt
- 	\fancyhead[L]{{\fontsize{9}{12}\selectfont \scshape{\TypeRemiseVar}}}
- 	\fancyhead[C]{{\fontsize{9}{12}\selectfont--- \noms ---}}
- 	\fancyhead[R]{{\fontsize{9}{12}\selectfont\dateremiseVar}}
- 	
- 	
-	\renewcommand{\footrulewidth}{0.4pt}% Default \footrulewidth is 0pt
- 	\fancyfoot[L]{\fontsize{9}{12}\selectfont \hyperlink{ToC}{$\Delta$}}
- 	\fancyfoot[C]{\fontsize{9}{12}\selectfont \EstablishmentVar}
- 	\fancyfoot[R]{\fontsize{9}{12}\selectfont \thepage /\pageref{LastPage}}
-}
- 	
- % —————————————————————————————————————————————————
- % Modifier style du numéro de page
-%\rfoot{\vspace*{-2em} \thepage /\pageref{LastPage}}
-%\lfoot{\hyperlink{ToC}{$\Delta$}}
-
-% —————————————————————————————————————————————————
-% —————————————————————————————————————————————————
-% TITLE PAGE FORMATING
-\newcommand{\TitlePAGE}{
-\begin{titlepage}
-	
-	\centering % Centre everything on the title page
-	
-	%\scshape % Use small caps for all text on the title page
-	
-	\vspace*{\baselineskip} % White space at the top of the page
-	%\includegraphics[width=0.15\textwidth]{example-image-1x1}\par\vspace{1cm}
-	{\huge \scshape{\EstablishmentVar} \par}
-	
-	{\Large \DepartmentVar \par}
-	
-	\vspace{2cm}
-	
-	\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} % Thick horizontal rule
-	\rule{\textwidth}{0.4pt} % Thin horizontal rule
-	
-	\vspace{0.75\baselineskip} % Whitespace above the title
-	
-	{\ifthenelse{\equal{\sigleCoursVar}{•}}{\bfseries\LARGE \scshape{\titreCoursVar} \par}{\bfseries\LARGE \sigleCoursVar \\ \scshape{\titreCoursVar} \par}}%
-	
-	
-	\rule{\widthof{\titreCoursVar}+\widthof{\titreCoursVar}}{1pt} \\
-	{\bfseries\scshape\Large \TypeRemiseVar \par}
-	
-	\vspace{0.75\baselineskip} % Whitespace below the title
-	
-	\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal rule
-	\rule{\textwidth}{1.6pt} % Thick horizontal rule
-	
-	\vspace{2cm}
-	{\Large \nomsjump \par}
-	\vfill
-	\HandedtoText \\
-	{\Large \NomProf \\}
-
-	\vfill
-
-% Bottom of the page
-	{\large \dateremiseVar \par}
-\end{titlepage}
-\clearpage
-
-}
-
-
+% Ligne 234 pour cacher notes de rédaction
 
 % —————————————————————————————————————————————————
 % \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -116,8 +6,34 @@
 % ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 % —————————————————————————————————————————————————
 
+% Array package en premier sinon conflit avec cellspace
+\usepackage{array}
+
+% Permet l'utilisation du nom des couleurs
+\usepackage[svgnames]{xcolor}
+
 % Packages
 \usepackage{dsfont} % Nécessaire pour les symboles d'ensembles mathématiques
+
+% -----------------------------------------------------
+% Fonction protegeant la calligraphy avant de changer mathcal
+\makeatletter
+\newcommand\preserveCal[2]{
+    \expandafter\newsavebox\csname box@\string#1\endcsname
+    \expandafter\savebox\csname box@\string#1\endcsname{\ensuremath{\mathcal{#2}}}
+    \expandafter\def\expandafter#1\expandafter
+        {\expandafter\usebox\csname box@\string#1\endcsname}
+}
+
+% Sauvegarde de la calligraphy originale du L en mathcal
+\preserveCal{\calL}{L} % Pour la vraisemblance
+\preserveCal{\calN}{N} % Pour la loi Normale
+\makeatother
+
+% Puis on remplace mathcal par la version de Zapf Chancery
+\usepackage{urwchancal} 
+% -----------------------------------------------------
+
 \usepackage{upgreek} % Nécessaire pour l'utilisation de upgreek dans les 
                      	% probabilités de transition des chaînes de Markov
 
@@ -136,31 +52,194 @@
 
 % Permet d'importer du code et de le formater
 \usepackage{listingsutf8}
-\lstset{inputencoding=utf8/latin1}
+
+% Permet l'utilisation des fonctions \sfrac qui permet d'afficher des fractions couchées
+\usepackage{xfrac}
+
+% Utilisé pour changer l'apparence des entêtes de sections, sous-sections, etc...
+%\usepackage{titlesec}
+
+% Permet de dessiner dans LaTeX
+\usepackage{tikz}
+
+%% Adjusting the table format
+%\usepackage{booktabs}
+%\setlength{\heavyrulewidth}{3\lightrulewidth}
+%\setlength{\abovetopsep}{1ex}
+
+% Permet l'utilisation de lignes pointillées dans les tableaux (: vs |) et (\cdashline vs \cline)
+\usepackage{arydshln}
+
+% Utilisation des symboles d'intégrale et de somme spéciaux
+\usepackage{bigints}
+
+%Format pour des adresse web
+\usepackage{url}
+
+% Permet l'inclusion de fichier en spécifiant les bornes d'inclusion
+\usepackage{catchfilebetweentags}
+
+% Permet d'afficher les noms des hyperef utilisé lors de la rédaction, mettre en commentaire lorsque la rédaction est terminée
+%\usepackage{showkeys}
+
+% Affiche seulement les numéros d'équations lorsqu'elles sont référenciées
+%\usepackage{mathtools}
+%\mathtoolsset{showonlyrefs}
+
+% Package pour utiliser multirow dans des tables
+\usepackage{multirow}
+
+% Package pour utiliser bigstrut dans des tables (which creates struts which (slightly) stretch the table row in which they sit.)
+\usepackage{bigstrut}
+
+% Package pour utiliser ldelim et rdelim dans des tables, utilise pour construire matrices
+%\ldelim({〈n〉}{〈width〉}[〈text〉]
+%\rdelim){〈n〉}{〈width〉}[〈text〉]
+\usepackage{bigdelim}
+
+% Permet d'utiliser la fonction \hhline{del del del del}
+\usepackage{hhline} 
+
+\usepackage{booktabs}
+
+% Permet d'augmenter la distance minimale entre le haut et le bas de la ligne de colonne et le texte
+\usepackage[math]{cellspace}
+            \cellspacetoplimit 10pt
+            \cellspacebottomlimit 10pt
+            
 
 % —————————————————————————————————————————————————
 % \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 % ------------------------------------------------------ NEW ENVIRONMENTS -------------------------------------------------------------
 % ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 % —————————————————————————————————————————————————
+\setcounter{tocdepth}{4}% Allow only \chapters and sections  in ToC
+
+% ————————————————
+% CITATION FORMAT
+% ————————————————
+% Format pour l'année de publication
+\DeclareCiteCommand{\citeyear}[\unspace]
+    {\usebibmacro{prenote} [}
+    {\bibhyperref{\printfield{year}}\bibhyperref{\printfield{extrayear}}}
+    {\multicitedelim}
+    {]}
+    
+% Format pour le nom des auteurs ou autrices d'une publication ainsi que la ponctuation 
+%	correcte pour lorsqu'il y en a plus d'un.e
+\DeclareNameFormat{FirstLast}{%
+  \ifthenelse{\value{listtotal}=1}
+    {\textsc{\namepartfamily}} % End case =1
+    {\ifthenelse{\value{listtotal}=2}
+      {\ifthenelse{\value{listcount}<\value{listtotal}}
+        {\textsc{\namepartfamily}}
+        {\addspace\bibstring{and}\addspace\textsc{\namepartfamily}}}% End case =2
+      {\ifthenelse{\value{listcount}=1}
+        {\textsc{\namepartfamily}}
+        {\ifthenelse{\value{listcount}<\value{listtotal}}
+          {\addcomma\addspace\textsc{\namepartfamily}}
+          {\addspace \bibstring{and}\addspace \textsc{\namepartfamily}}}%
+      }% End case >2
+    }% 
+}
+
+% Format pour la pagination dans la citation
+\renewcommand*{\postnotedelim}{}
+\DeclareFieldFormat{postnote}{\mkbibparens{\mkpageprefix[pagination][\mknormrange]{#1}}}
+
+% Retire le mois de l'affichige de la citation dans le texte
+\AtEveryCitekey{\clearfield{month}}
+
+% DÉCLARATION format pour les citations
+\DeclareCiteCommand{\mycite}%
+%[\unspace]%[〈wrapper〉]
+{\usebibmacro{prenote}\printnames[FirstLast]{author} [}%{〈precode〉}
+{\bibhyperref{\printdateextra}}%{〈loopcode〉}
+{, }%{〈sepcode〉}
+{]\usebibmacro{postnote}}%{〈postcode〉}
 
 
+%% DÉCLARATION format pour les citations multiples
+%\DeclareMultiCiteCommand{\mycites}%
+%[\iffootnote\bibsentence\mkbibfootnote]%
+%{\mycite}%
+%{\multicitedelim}
 
+
+% ————————————————
+% PARAGRAPH ENVIRONMENT
+% ————————————————
+\setcounter{secnumdepth}{5} % Numéroté les paragraphes
+\def\toclevel@paragraph{5}
+
+
+% ————————————————
+% CHAPTER ENVIRONMENT
+% ————————————————
+%\makeatletter
+%\renewcommand\chapter{%
+%	\@startsection{chapter}{0}{\z@}%
+%		{3.25ex \@plus1ex \@minus.2ex}%
+%  		{1ex}% Si valeur négative, pas de linebreak comme pour paragraphe
+%  		{\normalfont\normalsize\bfseries}%
+%}
+% \makeatother
+
+
+% ————————————————
+% SUBSUBSECTION ENVIRONMENT
+% ————————————————
+\makeatletter
+\renewcommand\subsubsection{%
+	\@startsection{subsubsection}{3}{\z@}%
+		{3.25ex \@plus1ex \@minus.2ex}%
+  		{1ex}% Si valeur négative, pas de linebreak comme pour paragraphe
+  		{\normalfont\normalsize\bfseries}%
+}
+ \makeatother
+ 
 % ————————————————
 % KEYWORK ENVIRONMENT
 % ————————————————
 \providecommand{\keywords}[1]{\rule{\textwidth}{0.02cm} \\ \textbf{\textit{Key Terms --- }} #1 \\ \rule{\textwidth}{0.02cm}\vspace*{0.4cm}}
 
 % ————————————————
-% Environnement pour laisser des notes de rédaction
+% TESTING ENVIRONMENT
 % ————————————————
+\def \ifempty#1{\def\temp{#1} \ifx\temp\empty }
+\DeclareRobustCommand{\ifOneEmptyThenTwoElseThree}[3]{ \ifempty{#1} #2 \else #3 \fi }
+
+
+% ————————————————
+% NOTES DE RÉDACTIONS
+% ————————————————
+\def \testNDR#1{ \ifOneEmptyThenTwoElseThree{#1}{N.D.R.}{} }
 \newenvironment{NoteRedac}[1]% environment name
 {% begin code
 \begin{tcolorbox}
-  \textbf{#1 :}\begin{itshape}%
+  \textbf{\testNDR{#1} :}\begin{itshape}%
 }%
 {\end{itshape}
 \end{tcolorbox}}% end code 
+
+% Hiding notes from printed pdf
+\newif\ifhidenotes
+% ————————————————————————————————————————————————
+	% ————————————————————————————————
+		% ————————————————
+		
+% Uncomment to hide notes
+%\hidenotestrue 
+
+		% ————————————————
+	% ————————————————————————————————
+% ————————————————————————————————————————————————
+\ifhidenotes
+\usepackage{environ}
+\NewEnviron{hide}{}
+\let\NoteRedac\hide
+\let\endNoteRedac\endhide
+\fi
 
 % ————————————————
 % Environnement pour code R et formatage
@@ -190,7 +269,38 @@
     frame=trBL
  }
 
+% ————————————————
+% Environnement de dessins
+% ————————————————
 
+%Encercler
+\newcommand\encercler[1]{%
+  \tikz[baseline=(X.base)] 
+    \node (X) [draw, shape=circle, inner sep=2,outer sep=0, minimum width=35, anchor=text] {\strut #1};}
+    
+    %Encercler bleu
+\usepackage{tikz}
+\newcommand\encerclerbleu[1]{%
+  \tikz[baseline=(X.base)] 
+    \node (X) [draw, shape=circle, inner sep=2,outer sep=0, minimum width=35, anchor=text, fill=blue!20] {\strut #1};}
+    
+% Petit cercle coloré
+\newcommand\smallcirc[1]{%
+  \tikz[baseline=(X.base)] 
+    \node (X) [draw, shape=circle, inner sep=0,outer sep=0, minimum width=0, anchor=text,fill={rgb:black,1;white,10}] {\strut \mbox{\small{#1}}};}
+    
+% Petit cercle coloré
+\newcommand\smallcircColor[2]{%
+  \tikz[baseline=(X.base)] 
+    \node (X) [draw, shape=circle, inner sep=0,outer sep=0, minimum width=0, anchor=text,fill={rgb:#2,4;white,10}] {\strut \mbox{\small{#1}}};}
+    
+    %Encadrer
+\usepackage{tikz}
+\newcommand\encadrer[1]{%
+  \tikz[baseline=(X.base)] 
+    \node (X) [draw, shape=rectangle, inner sep=0,outer sep=3pt, rounded corners=1mm, minimum width=35] {\strut #1};}
+    
+    
 
 % —————————————————————————————————————————————————
 % \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -204,11 +314,29 @@
 % STRINGS
 % —————————————————————————————————————————————————
 
-\def\MMC{modèle de Markov à variables latentes\xspace}
-\def\MMCs{modèles de Markov à variables latentes\xspace}
+% Au long
+\def\MM{modèle\ de\ mélange\xspace}
+\def\MMs{modèles\ de\ mélange\xspace}
+\def\majMM{Modèle\ de\ mélange\xspace}
+\def\majMMs{Modèles\ de\ mélange\xspace}
 
-\def\edh{équation aux Différences Homogènes }
-\def\edhs{équations aux Différences Homogènes }
+\def\MC{chaîne\ de\ Markov\xspace}
+\def\MCs{chaînes\ de\ Markov\xspace}
+\def\majMC{Chaîne\ de\ Markov\xspace}
+\def\majMCs{Chaînes\ de\ Markov\xspace}
+
+\def\HMM{modèle\ de\ Markov\ à\ variables\ latentes\xspace}
+\def\HMMs{modèles\ de\ Markov\ à\ variables\ latentes\xspace}
+\def\majHMM{Modèle\ de\ Markov\ à\ variables\ latentes\xspace}
+\def\majHMMs{Modèles\ de\ Markov\ à\ variables\ latentes\xspace}
+
+% Accronymes
+\def\aHMM{\emph{HMM}\xspace}
+\def\aHMMs{\emph{HMMs}\xspace}
+
+% Au long Séries Chronologiques
+\def\edh{équation\ aux\ Différences\ Homogènes }
+\def\edhs{équations\ aux\ Différences\ Homogènes }
 
 
 
@@ -234,14 +362,24 @@
 % ————————————————
 % COLORING TEXT IN MATH MODE
 % ————————————————
+%\textcolor of package color adds a level of curly braces that become a subformula in math mode, destroying the spacing. The following example defines \mathcolor that can be used in the same way as \textcolor, but without the subformula side effect. It uses \begingroup and \endgroup instead of the curly braces that do not cause the trouble in math. A grouping level is needed for LaTeX's color handling that restores the color after the group via \aftergroup.
+
 \newcommand*{\mathcolor}{}
+
 \def\mathcolor#1#{\mathcoloraux{#1}}
+
 \newcommand*{\mathcoloraux}[3]{%
   \protect\leavevmode
   \begingroup
     \color#1{#2}#3%
   \endgroup
 }
+
+% Examples : 
+%$a\textcolor{red}{\ast}b$ %  SYMBOLES SERONT COLLÉS À L'ASTERIX
+%$a\mathcolor{red}{\ast}b$ %  SYMBOLES SERONT ESPACÉS À L'ASTERIX
+
+%The parameter text of \mathcolor is #1# with a final hash symbol without number. That means all tokens before the next opening curly brace are put into #1. In case of \mathcolor (or \textcolor) this is the optional argument. Without an optional argument #1 is empty, otherwise it contains the optional argument including the square brackets.
 
 
 
@@ -265,6 +403,11 @@
 \def\N{\mathds{N}}
 
 % ————————————————
+% Naturels Positifs
+% ————————————————
+\def\Npos{\N^{*}}
+
+% ————————————————
 % complexe
 % ————————————————
 \def\C{\mathds{C}}
@@ -280,26 +423,47 @@
 % MATHEMATICAL ENCLOSURES
 % —————————————————————————————————————————————————
 
+
 % ————————————————
 % PARANTHÈSES
 % ————————————————
-\def\parent#1{\!\left(#1\right)}
+\newcommand{\parent}[1]{%
+	{\left(#1\right)}\xspace%
+}
 
 % ————————————————
 % CROCHETS
 % ————————————————
-\def\crochet#1{\left[#1\right]}
+\newcommand{\crochet}[1]{%
+	{\left[#1\right]}\xspace%
+}
 
 % ————————————————
 % ACCOLADES
 % ————————————————
-\def\accolade#1{\left\{ #1 \right\} }
+\newcommand{\accolade}[1]{%
+	{\left\{ #1 \right\}}\xspace%
+}
 
 % ————————————————
 % Conditionnelle
 % ————————————————
-\def\cond#1#2{\left. #1\ \vphantom{#2} \right\vert #2}
+\def\cond#1#2{\left. #1\xspace \vphantom{#2} \right\vert #2}
 
+% ————————————————
+% Function syntax
+% ————————————————
+\newcommand{\fun}[3]{%
+	\ifOneEmptyThenTwoElseThree{#3}{%
+		#1\parent{#2} %
+	}{%
+		\ifOneEmptyThenTwoElseThree{#2}{%
+			{#1_{#3}} %
+		}{%
+			#1\parent{#2;#3} %
+		}%
+	}%
+}
 
 
 % —————————————————————————————————————————————————
@@ -307,14 +471,40 @@
 % —————————————————————————————————————————————————
 
 % ————————————————
+% MODULO 
+% ————————————————
+\renewcommand{\mod}[2]{#1\ \textbf{mod}\ #2}
+
+% ————————————————
+% CARDINALITÉ 
+% ————————————————
+\DeclareRobustCommand{\card}[1]{\text{Card}\parent{#1}}
+
+% ————————————————
 % LOGARITHME 
 % ————————————————
-\renewcommand{\log}[1]{\mathrm{log}\ #1}
+\renewcommand{\log}[1]{\mathrm{log}\parent{#1}}
+
+% ————————————————
+% FONCTION INDICATRICE 
+% ————————————————
+\newcommand{\id}[1]{\mathds{1}_{\accolade{#1}}}
+
+% ————————————————
+% FONCTION INDICATRICE 
+% ————————————————
+\newcommand{\sign}[1]{\mathrm{sign}\parent{#1}}
+
+% ————————————————
+% MAXIMUM ET MINIMUM 
+% ————————————————
+%\renewcommand{\max}[1]{\mathrm{max}\parent{#1}}
+%\renewcommand{\min}[1]{\mathrm{min}\parent{#1}}
 
 % ————————————————
 % ORDRE DE GRANDEUR 
 % ————————————————
-\newcommand{\Order}[1]{\mathrm{O}(#1)}
+\newcommand{\ordreG}[1]{\mathrm{O}\parent{#1}}
 
 % ————————————————
 % PLUS GRAND COMMUN DIVISEUR 
@@ -325,12 +515,12 @@
 % OPÉRATEUR e 
 % ————————————————
 \newcommand{\e}[1]{e^{#1}} % symbolique
-\renewcommand{\exp}[1]{\ \mathrm{exp}\!\accolade{ #1 } } % fonctionnel
+\renewcommand{\exp}[1]{\ \mathrm{exp}\accolade{ #1 } } % fonctionnel
 
 % ————————————————
 % POUR TOUT #1 DANS #2 
 % ————————————————
-\def\pourtoutd#1#2{\forall{\, #1 \in{#2} } }
+\def\pourtoutd#1#2{\forall{\, {#1} \in {#2} } }
 
 % ————————————————
 % SOMME avec limite inf et sup et le contenu comme dernier argument
@@ -345,7 +535,7 @@
 % ————————————————
 % MOMENT GENERATING FUNCTION
 % ————————————————
-\def\fgm#1#2{\mathcal{M}_{#1}\!\left(#2\right)}
+\def\fgm#1#2{M_{#1}\parent{#2}}
 
 % ————————————————
 % SCORE FUNCTION
@@ -379,13 +569,13 @@
 % Swap the definition of \abs* and \norm*, so that \abs
 % and \norm resizes the size of the brackets, and the 
 % starred version does not.
-\makeatletter
-\let\oldabs\abs
-\def\abs{\@ifstar{\oldabs}{\oldabs*}}
-%
-\let\oldnorm\norm
-\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
-\makeatother
+%\makeatletter
+%\let\oldabs\abs
+%\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%%
+%\let\oldnorm\norm
+%\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+%\makeatother
 
 % ————————————————
 % EXPOSANT -1
@@ -393,14 +583,9 @@
 \def\expMoinsUn#1{{#1}^{-1}}
 
 % ————————————————
-% Function syntax
-% ————————————————
-\newcommand{\fun}[3]{#1\!\parent{#2;#3}}
-
-% ————————————————
 % MSE Function format
 % ————————————————
-\def\MSE#1{\mathrm{MSE}\!\left(#1\right)}
+\def\MSE#1{\mathrm{MSE}\parent{#1}}
 
 % ————————————————
 % OVERLINE SUR LETTRE MAJUSCULE (POUR LE CONJUGUÉ)
@@ -421,22 +606,28 @@
 % —————————————————————————————————————————————————
 
 % Nouveau cos
-\long\def\coss#1{\cos\!\parent{#1}}
+\long\def\coss#1{\cos\parent{#1}}
 
 % Nouveau sin
-\long\def\sins#1{\sin\!\parent{#1}}
+\long\def\sins#1{\sin\parent{#1}}
 
 % Nouveau tan
-\long\def\tans#1{\tan\!\parent{#1}}
+\long\def\tans#1{\tan\parent{#1}}
 
 % Nouveau arctan
-\long\def\arctans#1{\arctan\!\parent{#1}}
+\long\def\arctans#1{\arctan\parent{#1}}
 
 
 
 % —————————————————————————————————————————————————
 % ALGEBRA
 % —————————————————————————————————————————————————
+
+
+% ————————————————
+% VECTEUR D'OBSERVATION DE t À n X_{t:n}
+% ————————————————
+\newcommand{\Xtn}[3]{{#1}_{{#2}:{#3}}}
 
 % ————————————————
 % MATRICE AUX FINS D'EXEMPLES
@@ -446,7 +637,8 @@
 % ————————————————
 % LETTRE DROITE POUR SIGNIFIÉ UNE MATRICE 
 % ————————————————
-\def\mat#1{\mathrm{\textbf{#1}}}
+\def\mat#1{\mathrm{\textbf{#1}}} % Pour lettre non-mathématique
+\def\mmat#1{\mathbf{#1}}            % Pour symbole en mathmode
 
 % ————————————————
 % APPARENCE VECTEUR
@@ -457,12 +649,12 @@
 % ————————————————
 % Vecteur de UN
 % ————————————————
-\def\vecun#1{\vecc{1}_{#1}}
+\def\vecun#1{\vecc{1}_{#1}\xspace}
 
 % ————————————————
 % MATRICE IDENTITE
 % ————————————————
-\def\Idn#1{\vecc{\mathrm{I}}_{#1}}
+\def\Idn#1{\vecc{\mathrm{I}}_{#1}\xspace}
 
 % ————————————————
 % DOT PRODUCT 
@@ -472,15 +664,38 @@
 \newcommand*\dotp@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
 \makeatother
 
+% Hadamard Product (Element-wise)
+\newcommand{\HadaProd}{{\odot}}
+
 % ————————————————
 % TRANSPOSÉE 
 % ————————————————
-\newcommand{\T}[1]{#1\prime}
+\newcommand{\T}[1]{{#1}^\prime}
+%\newcommand{\T}[1]{#1^{\!\text{T}}}
 
 % ————————————————
 % TRACE MATRICE
 % ————————————————
-\def\tr#1{\mathrm{tr}\!\left(#1\right)}
+\def\tr#1{\mathrm{tr}\parent{#1}}
+
+% ————————————————
+% DIAGONAL MATRICE
+% ————————————————
+\def\diag#1{\mathrm{diag}\parent{#1}}
+
+% ————————————————
+% TRIANGULAR MATRICE
+% ————————————————
+\newcommand{\triangInf}[1]{%
+	\mbox{%
+		\begin{picture}(10,10)%
+			\put(0,0){\linethickness{1pt}\line(1,0){10}}%
+			\put(0,0){\linethickness{1pt}\line(0,1){10}}%
+			\put(10,0){\linethickness{1pt}\line(-1,1){10}}%
+%			\put(0,1){\tiny{1}}%
+		\end{picture}%
+	}_{#1}%
+}
 
 % ————————————————
 % fonction MATRICE
@@ -494,6 +709,11 @@
 % ————————————————
 \def\spectre#1{\lambda\parent{#1}}
 
+% —————————————————————————————————————————————————
+% Matrice de Passage pour diagonalisation
+% —————————————————————————————————————————————————
+\def\P{\mat{P}} %
+
 
 
 % —————————————————————————————————————————————————
@@ -503,87 +723,280 @@
 % ————————————————
 % NORMALE
 % ————————————————
-\def\Normale#1#2#3#4{
-\def\temp{#4}\ifx\temp\empty % Testing for the 2nd argument's value
-  		\mathcal{N}_{#1}\parent{#2,#3}
-	\else
-		\mathcal{N}_{#1}\parent{#2_{#4},#3_{#4}}
-	\fi
+\DeclareRobustCommand{\Normale}[4]{%
+	\ifOneEmptyThenTwoElseThree{#4}{%
+		\calN_{#1}\parent{#2,#3}%
+	}{%
+		\calN_{#1}\parent{#2_{#4},#3_{#4}}%
+	}%
 }
 
 \def\densNormale#1#2#3{
-	\frac{1}{\sqrt{2\pi #3}}\exp{ \frac{-1}{2 #3} \parent{#1 - #2}^2 }
+	\frac{1}{\sqrt{2\pi #3}}\exp{ -\frac{1}{2 #3} \parent{#1 - #2}^2 }
+}
+
+
+% ————————————————
+% Fonction de densité(continu)/masse(discrète) et de répartition
+% ————————————————
+
+% Fonction de densité/masse
+\newcommand{\densite}[2]{%
+	\ifOneEmptyThenTwoElseThree{#2}{%
+		f\parent{#1}%
+	}{%
+		f_{#2}\parent{#1}%
+	}%
+}
+
+% Fonction de répartition
+
+
+
+% ————————————————
+% VRAISEMBLANCE
+% ————————————————
+
+% Vraisemblance
+\newcommand{\lk}[2]{
+\calL_{#2}\parent{#1}
+}
+
+% Log-vraisemblance
+\newcommand{\llk}[2]{
+\ell_{#2}\parent{#1}
+}
+
+% Vecteur de paramètres
+\def\parvec#1{%
+	\ifOneEmptyThenTwoElseThree{#1}{%
+		\vecc{\theta}%
+	}{%
+		\theta_{#1}%
+	}%
+}
+
+% Estimateur du max de vraisemblance
+\def\EMV#1{
+	\ifOneEmptyThenTwoElseThree{#1}{%
+		\vecc{\hat{\theta}}%
+	}{%
+		\hat{\theta}_{#1}%
+	}%
 }
 
 % ————————————————
 % PROBABILITÉ 
 % ————————————————
-\def\prob#1{\mathds{P}\!\crochet{#1}}
+% Forme complète avec P debout et crochet
+\DeclareRobustCommand{\prob}[1]{\protect\mathds{P}\crochet{#1}}
+
+% Forme abbrégée avec p minuscule et parenthèse 
+\DeclareRobustCommand{\probAbv}[2]{\protect\mathcal{P}_{#1}\parent{#2}}
 
 \def\Pr#1{\mathds{P}\!\left[#1\right]} % DEPRECATED
 
 % ————————————————
+% PROBABILITÉ INDICÉE
+% ————————————————
+\newcommand{\probt}[2]{p_{#1}\parent{#2}}
+
+% ————————————————
 % PROBABILITÉ CONDITIONNELLE
 % ————————————————
-\def\probcond#1#2{\mathds{P}\!\crochet{\cond{#1}{#2}}}
+\def\probcond#1#2{\mathds{P}\crochet{\cond{#1}{#2}}}
+
+% —————————————————————————————————————————————————
+% Distribution conditionnelle forme matricielle
+% —————————————————————————————————————————————————
+\def\matdistcond#1{\mat{P}\parent{#1}}
 
 
 % ————————————————
 % ESPÉRANCE
 % ————————————————
-\long\def\EspNB{\mathds{E}} % No Brackets
-\long\def\Esp#1{\mathds{E}\!\crochet{#1}} % Brackets
+\long\def\espNB{\mathds{E}} % No Brackets
+\long\def\esp#1{\mathds{E}\crochet{#1}} % Brackets
 
 % Espérance Conditionnelle
-\long\def\espcond#1#2{\Esp{\cond{#1}{#2}}}
+\long\def\espcond#1#2{\esp{\cond{#1}{#2}}}
 
 % Espérance Indicée
-\long\def\EspInd#1#2{\mathds{E}_{#1}\!\left[ #2 \right]}
+\long\def\espInd#1#2{\espNB_{#1}\crochet{#2}}
 
 % Espérance Conditionnelle et indicée
-\long\def\EspCondInd#1#2#3{\mathds{E}_{#1}\!\left[ \left. \vphantom{#3}#2 \right\vert #3 \right]}
+\long\def\espCondInd#1#2#3{\espNB_{#1}\cond{#2}{#3}}
 
+% Moment centré d'ordre #1
+\def\momentcentre#1{\tilde{\mu}_{#1}}
+
+% Symbole espérance d'une transfomation #1 d'une variable #2 avec exposant #3
+\newcommand{\symbEspfonc}[3]{%
+	\ifOneEmptyThenTwoElseThree{#1}{%
+		\prescript{}{}{\mu}^{#3}_{#2}\xspace%
+	}{%
+		\prescript{}{}{\mu}^{#3}_{\cond{#1}{#2}}\xspace%
+	}%
+}
+
+% Symbole espérance pondérée au temps #1 d'une transfomation #2 VECTORIEL LIGNE
+\newcommand{\VecEspfoncPOND}[2]{\vecl{\Omega}_{#2}^{\parent{#1}}}
+
+% Symbole espérance d'une transfomation #1 VECTORIEL
+\newcommand{\VecSymbEspfonc}[1]{\vecc{\mu}_{#1}}
+
+% Symbole espérance d'une transfomation #1 MATRICIEL
+\newcommand{\MatSymbEspfonc}[1]{\mat{M}_{#1}}
 
 % ————————————————
 % VARIANCE
 % ————————————————
 
 % Variance Simple
-\long\def\var#1{\mathds{V}\!ar\!\crochet{#1}}
+\long\def\varNB{{\mathds{V}\!ar}}
+\long\def\var#1{\varNB\crochet{#1}}
 
 % Variance Conditionnelle
-\long\def\varcond#1#2{\mathds{V}\!ar\!\crochet{\cond{#1}{#2}}}
+\long\def\varcond#1#2{\varNB\crochet{\cond{#1}{#2}}}
 
 % Covariance
-\long\def\cov#1#2{\hspace{0.08cm}\mathds{C}\!ov\!\crochet{#1 ,#2}}
+\long\def\cov#1#2{\hspace{0.08cm}\mathds{C}\!ov\crochet{#1 ,#2}}
 
 % Corrélation
-\long\def\correlation#1#2{\hspace{0.08cm}corr\!\parent{#1,#2}}
+\long\def\correlation#1#2{\mathds{C}\mathrm{orr}\crochet{#1,#2}}
+
 
 % AUTOCOVARIANCE FUNCTION
-\def\avf#1#2{\hspace{0.08cm}\gamma_{#1}\!\left(#2\right)}
+\def\avf#1#2{\hspace{0.08cm}\gamma_{#1}\parent{#2}}
 
 % AUTOCOVARIANCE FUNCTION de x
-\def\avfx#1{\hspace{0.08cm}\gamma_{x}\!\left(#1\right)}
+\def\avfx#1{\hspace{0.08cm}\gamma_{x}\parent{#1}}
 
 % AUTOCORRELATION FUNCTION
-\def\acf#1#2{\hspace{0.08cm}\rho_{#1}\!\left(#2\right)}
+\def\acf#1#2{\hspace{0.08cm}\rho_{#1}\parent{#2}}
 
 % AUTOCORRELATION FUNCTION de x
-\def\acfx#1{\hspace{0.08cm}\rho_{x}\!\left(#1\right)}
+\def\acfx#1{\hspace{0.08cm}\rho_{x}\parent{#1\right}}
+
+% —————————————————————————————————————————————————
+% //////////////////////////////////////////////////////////////////////////////////////////////
+% NOTATION FINANCIÈRE -----------------------------------------------------------
+% \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+% —————————————————————————————————————————————————
+
+% ————————————————
+% PRIX D'UN TITRE OU NIVEAU D'UN INDICE
+% ————————————————
+\def\prix#1{P_{#1}} % Prix au temps t
+
+% ————————————————
+% Log-rendement
+% ————————————————
+\def\logR#1{r_{#1}} % log-rendement t
+\def\logRvec#1#2{r_{#1:#2}} % vecteur de log-rendement t:(t+n)
+
+
+
 
 
 
 % —————————————————————————————————————————————————
 % //////////////////////////////////////////////////////////////////////////////////////////////
-% STT6705 - MODELES DE MARKOV A VARIABLE LATENTE -----------------------------------------------------------
+% MODELES DE MARKOV A VARIABLE LATENTE -----------------------------------------------------------
 % \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 % —————————————————————————————————————————————————
+
+% Fonction de construction du symbole associé à un processus
+\DeclareRobustCommand{\processSymbBuild}[3]{%
+	\ifOneEmptyThenTwoElseThree{#2}{%
+		\accolade{{#1}_t}_{t\in\N}%
+	}{%
+		\ifOneEmptyThenTwoElseThree{#3}{%
+			{#1}_{#2} %
+		}{%
+			\Xtn{#1}{#2}{#3}%
+		}%
+	}%
+}
+
+
+% ————————————————
+% Processus Latent
+% ————————————————
+\DeclareRobustCommand{\Latent}[1]{%
+	{\protect%
+		\processSymbBuild{C}{#1}{}%
+	}%
+}
+
+% ————————————————
+% OBSERVATION du processus Latent
+% ————————————————
+\DeclareRobustCommand{\latent}[2]{%
+	{\protect%
+		\processSymbBuild{c}{#1}{#2}%
+	}%
+}
+
+% ————————————————
+% Processus Observé
+% ————————————————
+\DeclareRobustCommand{\Obs}[1]{%
+	{\protect%
+		\processSymbBuild{X}{#1}{}%
+	}%
+}
+
+% ————————————————
+% OBSERVATION du processus Observé
+% ————————————————
+\DeclareRobustCommand{\obs}[2]{%
+	{\protect%
+		\processSymbBuild{x}{#1}{#2}%
+	}%
+}
+
+				
+% ————————————————
+% #4 TRAJECTOIRES d'un processus #1, de #2 à #3
+% ————————————————
+
+\DeclareRobustCommand{\trajectoire}[4][c]{%
+	\accolade{\processSymbBuild{#1}{#2}{#3}^{\parent{i}}}_{i=1}^{#4}%
+}
+
+% ————————————————
+% Processus instrumental
+% ————————————————
+\DeclareRobustCommand{\Instr}[2]{%
+	{\protect%
+		\processSymbBuild{Y}{#1}{#2}%
+	}%
+}
+
+% ————————————————
+% OBSERVATION du processus exogène
+% ————————————————
+\DeclareRobustCommand{\instr}[2]{%
+	{\protect%
+		\processSymbBuild{y}{#1}{#2}%
+	}%
+}
 
 % ————————————————
 % Espace d'états
 % ————————————————
-\def\espdetat{\mathcal{C}\!}
+\newcommand{\espdetat}{{\mathcal{C}}\xspace}
+
+% ————————————————
+% Environnement pour RÉSULTATS HOMOGÈNES
+% ————————————————
+\newcommand{\resMCHomo}[2]{\mathcolor{#1}{#2}}
+
+% ————————————————
+% Parents d'une variable
+% ————————————————
+\newcommand{\pa}[1]{\mathrm{pa}\parent{#1}}
 
 % ————————————————
 % Sigma indicé
@@ -600,18 +1013,14 @@
 % Probabilités de transition en m pas de la chaine de Markov
 % —————————————————————————————————————————————————
 \def\pdtHm#1#2{\upgamma_{#1}^{\parent{#2}}} % Homogène
-\def\pdtNHm#1#2#3{\upgamma_{#1}^{\parent{#3}}\parent{#2}} % Non-Homogène
+%\def\pdtNHm#1#2#3{{\upgamma_{#1}^{\parent{#3}}}_{\parent{#2}}} % Non-Homogène
+\def\pdtNHm#1#2#3{\prescript{}{}{\upgamma}^{\parent{#3}}_{#1}\parent{#2}\xspace} % Non-Homogène
 
 % —————————————————————————————————————————————————
 % Matrice de transition de la chaine de Markov
 % —————————————————————————————————————————————————
-\def\matTH{\mathbf{\Gamma}} % Homogène
+\def\matTH{\mmat{\Gamma}} % Homogène
 \def\matTNH#1{\matTH_{\!#1}} % Non-Homogène
-
-% —————————————————————————————————————————————————
-% Matrice de Passage pour diagonalisation
-% —————————————————————————————————————————————————
-\def\P{\mat{P}} %
 
 % —————————————————————————————————————————————————
 % Matrice de transition en m pas de la chaine de Markov
@@ -627,13 +1036,55 @@
 % —————————————————————————————————————————————————
 % Distribution marginale paramètre
 % —————————————————————————————————————————————————
-\def\distmargPara#1#2{\mathfrak{u}_{#2}\parent{#1}}
+\def\distmargi#1#2{\mathfrak{u}_{#2}\parent{#1}}
 
 % —————————————————————————————————————————————————
 % Distribution stationnaire de la chaîne
 % —————————————————————————————————————————————————
 \def\diststat{\vec{\mathbf{\pi}}}
 \def\dstat#1{\pi_{#1}}
+
+
+
+% —————————————————————————————————————————————————
+% MOMENT DE G(X_t)|C_t
+% —————————————————————————————————————————————————
+% Symbole Écart-Type d'une transfomation #1 conditionnellement à ce que C_t=#2 avec exposant #3
+\newcommand{\symbStdfonc}[3]{%
+	\ifOneEmptyThenTwoElseThree{#1}{ % <- TEST
+		\prescript{}{}{\sigma}^{#3}_{#2}\xspace % THEN
+	}{%
+		\prescript{}{}{\sigma}^{#3}_{\cond{#1}{#2}}\xspace % ELSE
+	}%
+}
+
+% Symbole Écart-Type d'une transfomation #1 VECTORIEL
+\newcommand{\VecSymbStdfonc}[1]{\vecc{\sigma}_{#1}}
+
+% Symbole Écart-Type d'une transfomation #1 MATRICIEL
+\newcommand{\MatSymbStdfonc}[1]{\mathbf{\Sigma}_{#1}}
+
+% Auto-correlation function for Markov chain - symbol For v.a. #1, step #2 and transformation #3 optional
+\newcommand{\ACFmc}[3]{\prescript{}{#3}{\rho}^{\parent{#2}}_{#1}}
+
+
+
+
+
+% —————————————————————————————————————————————————
+% MOMENT DE G(X_t)|G(X_1:t-1)
+% —————————————————————————————————————————————————
+
+
+
+
+
+% —————————————————————————————————————————————————
+% MOMENT DE C_t|G(X_1:t-1) ou C_t|G(X_1:t)
+% —————————————————————————————————————————————————
+
+
+
 
 % ————————————————
 % Filtre d'Hamilton
